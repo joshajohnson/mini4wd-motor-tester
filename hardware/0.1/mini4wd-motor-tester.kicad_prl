@@ -48,7 +48,7 @@
       "drc_warnings",
       "shapes"
     ],
-    "visible_layers": "00000000_00000000_0000ffff_80000001",
+    "visible_layers": "00000000_00000000_0000fff5_a2000005",
     "zone_display_mode": 1
   },
   "git": {
@@ -57,7 +57,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "mini4x4-motor-tester.kicad_prl",
+    "filename": "mini4wd-motor-tester.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {

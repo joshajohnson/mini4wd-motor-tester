@@ -510,7 +510,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "mini4x4-motor-tester.kicad_pro",
+    "filename": "mini4wd-motor-tester.kicad_pro",
     "version": 3
   },
   "net_settings": {
