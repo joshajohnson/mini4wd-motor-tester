@@ -273,6 +273,10 @@
         "Low side of transistor tied to GND"
       ],
       [
+        "pin_to_pin|558800|2501900|d494db3d-0e8e-41c4-8107-c67923cc0aa9|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
+        "Low side of transistor tied to GND"
+      ],
+      [
         "pin_to_pin|800100|1003300|053b5b0b-30eb-4837-89f4-95ac32561bc6|1a0cc94d-8a1b-4ce8-8387-61aa79696fb1|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
         "Power pins ganged together on buck reg"
       ],
@@ -684,6 +688,12 @@
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
           "show": false
+        },
+        {
+          "group_by": false,
+          "label": "JLCSMT",
+          "name": "JLCSMT",
+          "show": false
         }
       ],
       "filter_string": "",
@@ -732,7 +742,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "",
+    "plot_directory": "C:/Users/Josh/Downloads/",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,
