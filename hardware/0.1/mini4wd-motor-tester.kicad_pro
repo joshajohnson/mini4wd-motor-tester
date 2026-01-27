@@ -570,7 +570,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "entropy0.3w.step",
+      "step": "4wd-motor-tester.step",
       "svg": "",
       "vrml": ""
     },
