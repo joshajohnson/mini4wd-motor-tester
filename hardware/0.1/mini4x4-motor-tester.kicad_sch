@@ -1,0 +1,19 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "5d80fb7d-ae13-4e08-ba61-7e26fe6662ad")
+	(paper "A3")
+	(title_block
+		(title "mini4x4-motor-tester")
+		(rev "0.1")
+		(company "Josh Johnson")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
