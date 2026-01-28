@@ -2982,6 +2982,88 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Mechanical:Mechanical_Shape"
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "S"
+				(at 0 6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Mechanical_Shape"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mechanical shape, non-electric, board outlines"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "Mechanical Shape Outline"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*Shape* *Outline*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Mechanical_Shape_1_1"
+				(polyline
+					(pts
+						(xy 1.27 2.54) (xy -1.27 2.54) (xy -2.54 1.27) (xy -2.54 -1.27) (xy -1.27 -2.54) (xy 1.27 -2.54)
+						(xy 2.54 -1.27) (xy 2.54 1.27) (xy 1.27 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Mechanical:MountingHole_Pad"
 			(pin_numbers
 				(hide yes)
@@ -15377,6 +15459,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 58.42 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "6932f11f-ad59-4756-a526-ea6bfbb8b51f")
 		)
@@ -15472,6 +15563,15 @@
 		)
 		(property "Substitute" "Y"
 			(at 58.42 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 58.42 35.56 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15629,6 +15729,15 @@
 			)
 		)
 		(property "MPN " "CC0603KRX7R9BB104"
+			(at 331.47 33.02 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 331.47 33.02 90)
 			(effects
 				(font
@@ -16185,6 +16294,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 185.42 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "03689425-a95a-4bd0-9561-19677df16b8f")
 		)
@@ -16417,6 +16535,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 233.68 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "64cba3cc-c555-4508-a206-bc06d7cbd268")
 		)
@@ -16529,6 +16656,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 29.21 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a077e5a3-9714-4c78-a491-8ac030287754")
 		)
@@ -16618,6 +16754,15 @@
 			)
 		)
 		(property "Manufacturer" "Changjiang Electronics Tech (CJ)"
+			(at 121.92 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 121.92 250.19 0)
 			(effects
 				(font
@@ -16792,6 +16937,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 114.3 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b7bf06d9-10a9-4a7a-9443-00fd91e208d5")
 		)
@@ -16887,6 +17041,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 120.65 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2f6b3a32-06c1-478c-99df-d8cbc9b159ca")
 		)
@@ -16949,6 +17112,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 247.65 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 247.65 274.32 0)
 			(effects
 				(font
@@ -17042,6 +17214,15 @@
 			)
 		)
 		(property "MPN " "CL10A105KB8NNNC"
+			(at 254 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 254 173.99 90)
 			(effects
 				(font
@@ -17276,6 +17457,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 134.62 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "eaad54c0-ef47-41cb-bfc1-07106c93764c")
 		)
@@ -17447,6 +17637,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 250.19 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1159fcfb-7bd1-44e4-9352-cf543f2d6ce2")
 		)
@@ -17557,6 +17756,15 @@
 			)
 		)
 		(property "Manufacturer" "Stackpole"
+			(at 250.19 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 250.19 152.4 0)
 			(effects
 				(font
@@ -17724,6 +17932,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 229.87 134.62 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1984fd20-9c0a-4457-9096-3215d5fae6ab")
 		)
@@ -17741,16 +17958,16 @@
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
-		(at 167.64 255.27 0)
+		(at 167.64 257.81 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1f2fddc6-f9d6-4630-b594-99da82e36ce2")
 		(property "Reference" "J4"
-			(at 170.18 255.2699 0)
+			(at 170.18 255.5241 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17759,7 +17976,7 @@
 			)
 		)
 		(property "Value" "JST XH"
-			(at 170.18 257.8099 0)
+			(at 169.926 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17768,7 +17985,7 @@
 			)
 		)
 		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical"
-			(at 167.64 255.27 0)
+			(at 167.64 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17777,7 +17994,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 167.64 255.27 0)
+			(at 167.64 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17786,7 +18003,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 167.64 255.27 0)
+			(at 167.64 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17795,7 +18012,7 @@
 			)
 		)
 		(property "LCSC" "C158012"
-			(at 167.64 255.27 0)
+			(at 167.64 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17804,7 +18021,7 @@
 			)
 		)
 		(property "MPN " "B2B-XH-A(LF)(SN)"
-			(at 167.64 255.27 0)
+			(at 167.64 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17813,7 +18030,16 @@
 			)
 		)
 		(property "Manufacturer" "JST"
-			(at 167.64 255.27 0)
+			(at 167.64 257.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 167.64 257.81 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17973,6 +18199,15 @@
 			)
 		)
 		(property "MPN " "CL10A105KB8NNNC"
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 77.47 31.75 0)
 			(effects
 				(font
@@ -18143,6 +18378,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 360.68 199.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f7021e32-9097-43df-847f-cf7c5142b1ed")
 		)
@@ -18259,6 +18503,15 @@
 			)
 		)
 		(property "MPN " "0603WAF220JT5E"
+			(at 342.9 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 342.9 143.51 90)
 			(effects
 				(font
@@ -18428,6 +18681,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 379.73 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "8dfa2077-3bd5-44b6-92c0-3fb704c2411d")
 		)
@@ -18520,6 +18782,15 @@
 			)
 		)
 		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 127 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 127 101.6 0)
 			(effects
 				(font
@@ -18622,6 +18893,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 116.84 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bb97b9fd-ca55-4465-b3be-a486b418b5f7")
 		)
@@ -18702,6 +18982,79 @@
 		)
 	)
 	(symbol
+		(lib_id "Mechanical:Mechanical_Shape")
+		(at 288.29 279.4 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "329f0507-6477-4391-9eef-e8e5d3c25210")
+		(property "Reference" "G1"
+			(at 291.846 277.622 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 292.1 280.6699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "josh-logos:josh-details"
+			(at 288.29 284.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 288.29 275.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mechanical shape, non-electric, board outlines"
+			(at 288.29 279.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 288.29 279.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "G1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 384.81 46.99 270)
 		(mirror x)
@@ -18747,6 +19100,15 @@
 		)
 		(property "Description" "test point"
 			(at 384.81 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 384.81 46.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18901,6 +19263,15 @@
 			)
 		)
 		(property "MPN " "CC0603KRX7R9BB104"
+			(at 364.49 185.42 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 364.49 185.42 90)
 			(effects
 				(font
@@ -19135,6 +19506,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 349.25 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5301c043-272d-46d4-b58d-262d8c7f6cee")
 		)
@@ -19196,6 +19576,15 @@
 		)
 		(property "Description" "test point"
 			(at 384.81 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 384.81 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19294,6 +19683,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 274.32 50.8 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3684d343-8dbf-4b3a-8ef2-86c338e90b58")
 		)
@@ -19355,6 +19753,15 @@
 		)
 		(property "Description" "test point"
 			(at 102.87 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 102.87 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19510,6 +19917,15 @@
 			)
 		)
 		(property "Manufacturer" "Korean Hroparts Elec"
+			(at 35.56 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 35.56 43.18 0)
 			(effects
 				(font
@@ -19722,6 +20138,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 69.85 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "13"
 			(uuid "27bfb59f-3309-4c1b-ac58-e5d52213eda6")
 		)
@@ -19837,6 +20262,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 265.43 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bf8e73d7-0742-4005-92c2-db8a515479c7")
 		)
@@ -19922,6 +20356,15 @@
 			)
 		)
 		(property "Manufacturer" "FH (Guangdong Fenghua Advanced Tech)"
+			(at 339.09 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 339.09 90.17 0)
 			(effects
 				(font
@@ -20091,6 +20534,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 153.67 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "b0f46a86-cb72-4ef1-bfd3-32b93f49b89e")
 		)
@@ -20153,6 +20605,15 @@
 			)
 		)
 		(property "Description" "DC Motor"
+			(at 278.13 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 278.13 189.23 0)
 			(effects
 				(font
@@ -20517,6 +20978,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 48.26 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "cc39759b-7829-497e-914d-bd018f698690")
 		)
@@ -20613,6 +21083,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 17.78 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "35f460c7-24fd-4617-80bd-8c8acf39b19a")
 		)
@@ -20673,6 +21152,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 132.08 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 132.08 119.38 0)
 			(effects
 				(font
@@ -20767,6 +21255,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 62.23 240.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 62.23 240.03 0)
 			(effects
 				(font
@@ -20909,6 +21406,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 287.02 273.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
@@ -21000,6 +21506,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 233.68 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "05076338-3cdf-41ba-b953-bb64a49e6b7a")
 		)
@@ -21061,6 +21576,15 @@
 		)
 		(property "Description" "test point"
 			(at 391.16 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 391.16 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21394,6 +21918,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 274.32 278.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
@@ -21477,6 +22010,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 363.22 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 363.22 72.39 0)
 			(effects
 				(font
@@ -21644,6 +22186,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 247.65 36.83 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "43703680-9654-4991-8545-1dd942b94662")
 		)
@@ -21776,6 +22327,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 116.84 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9be2f083-f31f-4169-bba4-b224afb7ff7e")
 		)
@@ -21833,6 +22393,15 @@
 		)
 		(property "Description" "test point"
 			(at 325.12 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 325.12 83.82 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22099,6 +22668,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 325.12 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "08779ca6-11db-4360-8700-2913d579d96d")
 		)
@@ -22185,6 +22763,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 99.06 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 99.06 107.95 0)
 			(effects
 				(font
@@ -22282,6 +22869,15 @@
 		)
 		(property "Manufacturer" "Murata"
 			(at 254 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 254 167.64 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22428,6 +23024,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 135.89 240.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5003c7e3-fce0-4fa0-b9cf-99e78ef4c476")
 		)
@@ -22493,6 +23098,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 256.54 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 256.54 274.32 0)
 			(effects
 				(font
@@ -22584,6 +23198,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 347.98 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 347.98 78.74 90)
 			(effects
 				(font
@@ -22686,6 +23309,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 130.81 233.68 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5e892a8d-a703-485c-8f1d-965b4f8b6075")
 		)
@@ -22781,6 +23413,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 146.05 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "a83b17a2-69ea-4082-9360-cf55bfffec37")
 		)
@@ -22867,6 +23508,15 @@
 			)
 		)
 		(property "Manufacturer" "Sharp"
+			(at 355.6 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 355.6 140.97 0)
 			(effects
 				(font
@@ -23046,6 +23696,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 100.33 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "de375280-ac84-424b-ab84-eade17576224")
 		)
@@ -23155,6 +23814,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 36.83 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "6a83788a-2a79-4f14-af45-656d96a442f6")
 		)
@@ -23240,6 +23908,15 @@
 			)
 		)
 		(property "MPN " "SM04B-SRSS-TB(LF)(SN)"
+			(at 294.64 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 294.64 68.58 0)
 			(effects
 				(font
@@ -23342,6 +24019,15 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
+			(at 38.1 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 38.1 96.52 0)
 			(effects
 				(font
@@ -23502,6 +24188,15 @@
 			)
 		)
 		(property "MPN " "CL10A105KB8NNNC"
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 92.71 31.75 0)
 			(effects
 				(font
@@ -23739,6 +24434,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 247.65 25.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c7b9e8ac-165a-4b72-9941-3a963e7c5f99")
 		)
@@ -23901,6 +24605,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 156.21 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "91cce46a-b059-4259-bd3e-2e076730bd15")
 		)
@@ -23988,6 +24701,15 @@
 			)
 		)
 		(property "Manufacturer" "Bourns"
+			(at 375.92 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 375.92 81.28 0)
 			(effects
 				(font
@@ -24167,6 +24889,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 384.81 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "abe85dd6-a61e-48ac-8f31-00ebf63d8e76")
 		)
@@ -24294,6 +25025,15 @@
 		)
 		(property "Description" "test point"
 			(at 148.59 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 148.59 97.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24457,6 +25197,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 46.99 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "6eb7f135-6403-4c0a-8494-3c86dae6fe9c")
 		)
@@ -24545,6 +25294,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 265.43 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 265.43 64.77 0)
 			(effects
 				(font
@@ -24778,6 +25536,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0f57e945-9370-4f66-84d0-b7d1bff2ef86")
 		)
@@ -24904,6 +25671,15 @@
 		)
 		(property "Description" "test point"
 			(at 391.16 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 391.16 49.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25274,6 +26050,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 156.21 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4c65de1f-1cff-4aa0-8df9-2ccd13681f89")
 		)
@@ -25335,6 +26120,15 @@
 		)
 		(property "Description" "test point"
 			(at 384.81 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 384.81 53.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25502,6 +26296,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 114.3 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "582da48d-94d4-44fd-9ab2-cd05b3bd868b")
 		)
@@ -25597,6 +26400,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 280.67 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "2ceaa22f-2096-43b1-94ad-4eb4032b3b3c")
 		)
@@ -25684,6 +26496,15 @@
 			)
 		)
 		(property "MPN " "CL10A105KB8NNNC"
+			(at 243.84 173.99 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 243.84 173.99 90)
 			(effects
 				(font
@@ -25794,6 +26615,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 392.43 38.1 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0787d377-f98e-400d-8e60-c9549708c61b")
 		)
@@ -25855,6 +26685,15 @@
 		)
 		(property "Description" "test point"
 			(at 90.17 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 90.17 250.19 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26019,6 +26858,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 87.63 97.79 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "0fb08f6d-8bd2-45b3-bc70-c5a829a369ab")
 		)
@@ -26116,6 +26964,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 149.86 256.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e440ab18-8437-4793-b53a-b06a57e48f2e")
 		)
@@ -26203,6 +27060,15 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
+			(at 86.36 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 86.36 27.94 0)
 			(effects
 				(font
@@ -26439,6 +27305,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 25.4 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "f12806f0-9081-44ea-9f5b-a6b77e8d0b5e")
 		)
@@ -26599,6 +27474,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 149.86 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "f6fcec54-054e-4b1f-b6c4-6b9d890633c2")
 		)
@@ -26708,6 +27592,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 355.6 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1e69d629-1159-4016-9d1e-6bd16824df1e")
 		)
@@ -26769,6 +27662,15 @@
 		)
 		(property "Description" "test point"
 			(at 397.51 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 397.51 143.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26868,6 +27770,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 228.6 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d01ed3c6-cda8-4cce-9f5b-d33881e4e870")
 		)
@@ -26956,6 +27867,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 273.05 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 273.05 64.77 0)
 			(effects
 				(font
@@ -27190,6 +28110,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 72.39 250.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "3"
 			(uuid "833d8c31-0eee-4a45-a8d9-f9e2348919e4")
 		)
@@ -27415,6 +28344,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 355.6 83.82 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a104aeaa-a4a0-413a-8e90-55a67d1d8316")
 		)
@@ -27504,6 +28442,15 @@
 			)
 		)
 		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 138.43 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 138.43 101.6 0)
 			(effects
 				(font
@@ -28105,6 +29052,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 281.94 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4574c4bc-23b6-4bf3-b501-536aaa0cc83b")
 		)
@@ -28191,6 +29147,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 369.57 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 369.57 133.35 0)
 			(effects
 				(font
@@ -28351,6 +29316,15 @@
 			)
 		)
 		(property "Manufacturer" "Sharp"
+			(at 48.26 247.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 48.26 247.65 0)
 			(effects
 				(font
@@ -28727,6 +29701,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 35.56 250.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9b55f350-afc3-4139-8f52-877f77ee9e63")
 		)
@@ -29025,6 +30008,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 284.48 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "567ddc7e-9af1-4afc-9cd9-097aa50975e1")
 		)
@@ -29112,6 +30104,15 @@
 			)
 		)
 		(property "MPN " "CL31A226KAHNNNE"
+			(at 228.6 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 228.6 27.94 90)
 			(effects
 				(font
@@ -29214,6 +30215,15 @@
 			)
 		)
 		(property "MPN " "N177-1216TCWPG01-H14"
+			(at 356.87 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 356.87 43.18 0)
 			(effects
 				(font
@@ -29392,6 +30402,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCSMT" ""
+			(at 274.32 273.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
@@ -29448,6 +30467,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 273.05 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 273.05 204.47 0)
 			(effects
 				(font
@@ -29540,6 +30568,15 @@
 		)
 		(property "Manufacturer" "UNI-ROYAL"
 			(at 127 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 127 120.65 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29673,6 +30710,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
+			(at 238.76 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 238.76 274.32 0)
 			(effects
 				(font
@@ -29961,6 +31007,15 @@
 			)
 		)
 		(property "Manufacturer" "Espressif"
+			(at 224.79 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 224.79 68.58 0)
 			(effects
 				(font
@@ -30303,6 +31358,15 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
+			(at 52.07 123.19 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
 			(at 52.07 123.19 90)
 			(effects
 				(font
