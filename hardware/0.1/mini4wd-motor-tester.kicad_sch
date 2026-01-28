@@ -8347,12 +8347,6 @@
 		(uuid "7c3e5e05-9741-4f71-ada7-da67a571fce4")
 	)
 	(junction
-		(at 99.06 97.79)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7efb2207-b154-4424-b247-5061df377d05")
-	)
-	(junction
 		(at 115.57 27.94)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8485,12 +8479,6 @@
 		(uuid "c4509c75-60b1-4aff-a559-03e9a65b3f4f")
 	)
 	(junction
-		(at 138.43 260.35)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c95357b9-0209-44c5-8db8-cbfa447f1617")
-	)
-	(junction
 		(at 234.95 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8539,12 +8527,6 @@
 		(uuid "d8290eb2-070d-47e2-8ceb-bc17c3f31d45")
 	)
 	(junction
-		(at 138.43 252.73)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "da8c7eed-c685-4730-aa90-10bf21ed3fce")
-	)
-	(junction
 		(at 360.68 208.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8567,6 +8549,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "e1c91caa-868d-4fa5-ad31-e27df590e331")
+	)
+	(junction
+		(at 99.06 113.03)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e344e838-c37d-4f92-9c7a-408ee5a451c6")
 	)
 	(junction
 		(at 341.63 44.45)
@@ -8944,7 +8932,7 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 106.68) (xy 99.06 113.03)
+			(xy 99.06 111.76) (xy 99.06 113.03)
 		)
 		(stroke
 			(width 0)
@@ -9224,6 +9212,16 @@
 			(type solid)
 		)
 		(uuid "2919d727-fcbb-42ba-a645-0f8cd70302d0")
+	)
+	(wire
+		(pts
+			(xy 99.06 113.03) (xy 102.87 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29ee1082-fee3-4b5f-acf7-ccf808d80d8e")
 	)
 	(wire
 		(pts
@@ -9867,16 +9865,6 @@
 			(type default)
 		)
 		(uuid "4c44ad80-493d-45cf-b2b0-5a77015ca37a")
-	)
-	(wire
-		(pts
-			(xy 99.06 97.79) (xy 107.95 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4d386284-309e-4739-9346-8ca020c5a8c5")
 	)
 	(wire
 		(pts
@@ -10663,7 +10651,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 275.59) (xy 215.9 276.86)
+			(xy 227.33 275.59) (xy 227.33 276.86)
 		)
 		(stroke
 			(width 0)
@@ -10753,7 +10741,7 @@
 	)
 	(wire
 		(pts
-			(xy 205.74 275.59) (xy 205.74 276.86)
+			(xy 217.17 275.59) (xy 217.17 276.86)
 		)
 		(stroke
 			(width 0)
@@ -11412,16 +11400,6 @@
 			(type default)
 		)
 		(uuid "ae5d6bba-b953-4dc9-9013-3605ed522586")
-	)
-	(wire
-		(pts
-			(xy 99.06 99.06) (xy 99.06 97.79)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aed7d974-92cd-4b23-836d-e20024b0ee6b")
 	)
 	(wire
 		(pts
@@ -12201,7 +12179,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 97.79) (xy 99.06 97.79)
+			(xy 93.98 97.79) (xy 107.95 97.79)
 		)
 		(stroke
 			(width 0)
@@ -16926,7 +16904,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
-		(at 236.22 274.32 0)
+		(at 247.65 274.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -16935,7 +16913,7 @@
 		(fields_autoplaced yes)
 		(uuid "0d7d17ec-0627-4d02-8870-85cc95697373")
 		(property "Reference" "H2"
-			(at 238.76 271.7799 0)
+			(at 250.19 271.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16944,7 +16922,7 @@
 			)
 		)
 		(property "Value" "M3"
-			(at 238.76 274.3199 0)
+			(at 250.19 274.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16953,7 +16931,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad_TopBottom"
-			(at 236.22 274.32 0)
+			(at 247.65 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16962,7 +16940,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 236.22 274.32 0)
+			(at 247.65 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16971,7 +16949,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 236.22 274.32 0)
+			(at 247.65 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17324,7 +17302,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 215.9 275.59 0)
+		(at 227.33 275.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17333,7 +17311,7 @@
 		(fields_autoplaced yes)
 		(uuid "14b98d4d-533d-4f56-9f91-639725391e69")
 		(property "Reference" "#FLG01"
-			(at 215.9 273.685 0)
+			(at 227.33 273.685 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17342,7 +17320,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 215.9 270.51 0)
+			(at 227.33 270.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17350,7 +17328,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 215.9 275.59 0)
+			(at 227.33 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17359,7 +17337,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 215.9 275.59 0)
+			(at 227.33 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17368,7 +17346,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 215.9 275.59 0)
+			(at 227.33 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19013,7 +18991,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 245.11 276.86 0)
+		(at 256.54 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -19021,7 +18999,7 @@
 		(dnp no)
 		(uuid "3884850b-6a43-4744-8301-a658a9762d6a")
 		(property "Reference" "#PWR042"
-			(at 245.11 283.21 0)
+			(at 256.54 283.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19030,7 +19008,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 245.237 281.2542 0)
+			(at 256.667 281.2542 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19038,7 +19016,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 245.11 276.86 0)
+			(at 256.54 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19047,7 +19025,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 245.11 276.86 0)
+			(at 256.54 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19056,7 +19034,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 245.11 276.86 0)
+			(at 256.54 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19071,70 +19049,6 @@
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "#PWR042")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:Fiducial")
-		(at 288.29 278.13 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "38d36da4-3460-4e85-bbca-8ef8b612d1b5")
-		(property "Reference" "FID6"
-			(at 290.83 276.8599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Fiducial"
-			(at 290.83 279.3999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Fiducial:Fiducial_1mm_Mask3mm"
-			(at 288.29 278.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 288.29 278.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fiducial Marker"
-			(at 288.29 278.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mini4x4-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "FID6")
 					(unit 1)
 				)
 			)
@@ -19390,6 +19304,71 @@
 			(project ""
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "R16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 102.87 113.03 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "3d407161-ae9c-486d-b6fa-c24ec01b3f2a")
+		(property "Reference" "TP13"
+			(at 104.648 111.252 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP"
+			(at 104.14 114.3 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 102.87 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 102.87 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 102.87 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3fbf74ce-acaf-4556-a28e-4964c6454429")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "TP13")
 					(unit 1)
 				)
 			)
@@ -19805,7 +19784,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
-		(at 254 274.32 0)
+		(at 265.43 274.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -19814,7 +19793,7 @@
 		(fields_autoplaced yes)
 		(uuid "46ae71bd-da2b-4292-950e-412b29319d31")
 		(property "Reference" "H4"
-			(at 256.54 271.7799 0)
+			(at 267.97 271.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19823,7 +19802,7 @@
 			)
 		)
 		(property "Value" "M3"
-			(at 256.54 274.3199 0)
+			(at 267.97 274.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19832,7 +19811,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad_TopBottom"
-			(at 254 274.32 0)
+			(at 265.43 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19841,7 +19820,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 254 274.32 0)
+			(at 265.43 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19850,7 +19829,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 254 274.32 0)
+			(at 265.43 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20650,70 +20629,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:Fiducial")
-		(at 288.29 273.05 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "4faeec1e-325b-4a07-8ecf-e3a468bb82d9")
-		(property "Reference" "FID5"
-			(at 290.83 271.7799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Fiducial"
-			(at 290.83 274.3199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Fiducial:Fiducial_1mm_Mask3mm"
-			(at 288.29 273.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 288.29 273.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fiducial Marker"
-			(at 288.29 273.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mini4x4-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "FID5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Connector:TestPoint")
 		(at 132.08 119.38 0)
 		(mirror y)
@@ -20941,7 +20856,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:Fiducial")
-		(at 275.59 273.05 0)
+		(at 287.02 273.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -20950,7 +20865,7 @@
 		(fields_autoplaced yes)
 		(uuid "506db9e8-0fe4-4781-993a-64d962388ef4")
 		(property "Reference" "FID3"
-			(at 278.13 271.7799 0)
+			(at 289.56 271.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20959,7 +20874,7 @@
 			)
 		)
 		(property "Value" "Fiducial"
-			(at 278.13 274.3199 0)
+			(at 289.56 274.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20968,7 +20883,7 @@
 			)
 		)
 		(property "Footprint" "Fiducial:Fiducial_1mm_Mask3mm"
-			(at 275.59 273.05 0)
+			(at 287.02 273.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20977,7 +20892,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 275.59 273.05 0)
+			(at 287.02 273.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20986,7 +20901,7 @@
 			)
 		)
 		(property "Description" "Fiducial Marker"
-			(at 275.59 273.05 0)
+			(at 287.02 273.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21426,7 +21341,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:Fiducial")
-		(at 262.89 278.13 0)
+		(at 274.32 278.13 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -21435,7 +21350,7 @@
 		(fields_autoplaced yes)
 		(uuid "56c9cd78-fa4e-4169-823e-0bc18f31f0b0")
 		(property "Reference" "FID2"
-			(at 265.43 276.8599 0)
+			(at 276.86 276.8599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21444,7 +21359,7 @@
 			)
 		)
 		(property "Value" "Fiducial"
-			(at 265.43 279.3999 0)
+			(at 276.86 279.3999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21453,7 +21368,7 @@
 			)
 		)
 		(property "Footprint" "Fiducial:Fiducial_1mm_Mask3mm"
-			(at 262.89 278.13 0)
+			(at 274.32 278.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21462,7 +21377,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 262.89 278.13 0)
+			(at 274.32 278.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21471,7 +21386,7 @@
 			)
 		)
 		(property "Description" "Fiducial Marker"
-			(at 262.89 278.13 0)
+			(at 274.32 278.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22198,7 +22113,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 99.06 102.87 0)
+		(at 99.06 107.95 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22207,7 +22122,7 @@
 		(fields_autoplaced yes)
 		(uuid "624c8a59-5088-45db-8e41-0d9a33184071")
 		(property "Reference" "R6"
-			(at 101.6 101.5999 0)
+			(at 101.6 106.6799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22216,7 +22131,7 @@
 			)
 		)
 		(property "Value" "100K"
-			(at 101.6 104.1399 0)
+			(at 101.6 109.2199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22225,7 +22140,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 97.282 102.87 90)
+			(at 97.282 107.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22234,7 +22149,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 99.06 102.87 0)
+			(at 99.06 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22243,7 +22158,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 99.06 102.87 0)
+			(at 99.06 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22252,7 +22167,7 @@
 			)
 		)
 		(property "LCSC" "C25803"
-			(at 99.06 102.87 0)
+			(at 99.06 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22261,7 +22176,7 @@
 			)
 		)
 		(property "MPN " "0603WAF1003T5E"
-			(at 99.06 102.87 0)
+			(at 99.06 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22270,7 +22185,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL"
-			(at 99.06 102.87 0)
+			(at 99.06 107.95 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22533,7 +22448,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
-		(at 245.11 274.32 0)
+		(at 256.54 274.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -22542,7 +22457,7 @@
 		(fields_autoplaced yes)
 		(uuid "6740585b-7ea9-418d-8aa4-cd004219b220")
 		(property "Reference" "H3"
-			(at 247.65 271.7799 0)
+			(at 259.08 271.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22551,7 +22466,7 @@
 			)
 		)
 		(property "Value" "M3"
-			(at 247.65 274.3199 0)
+			(at 259.08 274.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22560,7 +22475,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad_TopBottom"
-			(at 245.11 274.32 0)
+			(at 256.54 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22569,7 +22484,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 245.11 274.32 0)
+			(at 256.54 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22578,7 +22493,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 245.11 274.32 0)
+			(at 256.54 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22983,7 +22898,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 205.74 276.86 180)
+		(at 217.17 276.86 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -22991,7 +22906,7 @@
 		(dnp no)
 		(uuid "6ef0ba0d-655b-4483-b796-42b1bcf47c73")
 		(property "Reference" "#FLG02"
-			(at 205.74 278.765 0)
+			(at 217.17 278.765 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23000,7 +22915,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 205.74 281.178 0)
+			(at 217.17 281.178 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23008,7 +22923,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 205.74 276.86 0)
+			(at 217.17 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23017,7 +22932,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 205.74 276.86 0)
+			(at 217.17 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23026,7 +22941,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 205.74 276.86 0)
+			(at 217.17 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24107,7 +24022,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 236.22 276.86 0)
+		(at 247.65 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -24115,7 +24030,7 @@
 		(dnp no)
 		(uuid "89914660-0270-4fd2-addc-d5d28393b9dc")
 		(property "Reference" "#PWR041"
-			(at 236.22 283.21 0)
+			(at 247.65 283.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24124,7 +24039,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 236.347 281.2542 0)
+			(at 247.777 281.2542 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24132,7 +24047,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 236.22 276.86 0)
+			(at 247.65 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24141,7 +24056,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 236.22 276.86 0)
+			(at 247.65 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24150,7 +24065,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 236.22 276.86 0)
+			(at 247.65 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24784,6 +24699,101 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 163.83 111.76 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a232b7cd-1ece-4bff-8486-23651dff3787")
+		(property "Reference" "C12"
+			(at 166.751 110.5916 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1u"
+			(at 166.751 112.903 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 162.8648 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C15849"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Samsung Electro-Mechanics"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN " "CL10A105KB8NNNC"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0f57e945-9370-4f66-84d0-b7d1bff2ef86")
+		)
+		(pin "1"
+			(uuid "0ba8ac63-628c-468b-86f1-0244f5f4f836")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 281.94 207.01 0)
 		(unit 1)
@@ -24973,6 +24983,70 @@
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "#PWR034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 99.06 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ab6f8b29-9a76-44fe-8908-ef0ee6c0e0c9")
+		(property "Reference" "#PWR048"
+			(at 99.06 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 99.441 99.7458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 99.06 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bec29ca2-f7a8-48fb-aeef-a6fe5d6cae2f")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -26154,7 +26228,7 @@
 	)
 	(symbol
 		(lib_id "power:VMEM")
-		(at 205.74 275.59 0)
+		(at 217.17 275.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26163,7 +26237,7 @@
 		(fields_autoplaced yes)
 		(uuid "bc03db6b-2d45-4a6a-8cfe-43ffab5b0ceb")
 		(property "Reference" "#PWR078"
-			(at 205.74 279.4 0)
+			(at 217.17 279.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26172,7 +26246,7 @@
 			)
 		)
 		(property "Value" "+VMOT"
-			(at 205.74 270.51 0)
+			(at 217.17 270.51 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26180,7 +26254,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 205.74 275.59 0)
+			(at 217.17 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26189,7 +26263,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 205.74 275.59 0)
+			(at 217.17 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26198,7 +26272,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VMEM\""
-			(at 205.74 275.59 0)
+			(at 217.17 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26219,72 +26293,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:Fiducial")
-		(at 275.59 278.13 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "bdebef7b-9eb0-440f-bf8d-45204baba56b")
-		(property "Reference" "FID4"
-			(at 278.13 276.8599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "Fiducial"
-			(at 278.13 279.3999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Fiducial:Fiducial_1mm_Mask3mm"
-			(at 275.59 278.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 275.59 278.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Fiducial Marker"
-			(at 275.59 278.13 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "mini4x4-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "FID4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
-		(at 215.9 276.86 0)
+		(at 227.33 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26292,7 +26302,7 @@
 		(dnp no)
 		(uuid "be651afa-74b6-4f34-8731-b07a443aef0e")
 		(property "Reference" "#PWR077"
-			(at 215.9 283.21 0)
+			(at 227.33 283.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26301,7 +26311,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 216.027 281.2542 0)
+			(at 227.457 281.2542 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26309,7 +26319,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 215.9 276.86 0)
+			(at 227.33 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26318,7 +26328,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 215.9 276.86 0)
+			(at 227.33 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26327,7 +26337,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 215.9 276.86 0)
+			(at 227.33 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26446,7 +26456,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 254 276.86 0)
+		(at 265.43 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26454,7 +26464,7 @@
 		(dnp no)
 		(uuid "c06e0b1b-3058-462a-85b8-bf8b88bef166")
 		(property "Reference" "#PWR047"
-			(at 254 283.21 0)
+			(at 265.43 283.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26463,7 +26473,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 254.127 281.2542 0)
+			(at 265.557 281.2542 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26471,7 +26481,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 254 276.86 0)
+			(at 265.43 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26480,7 +26490,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 254 276.86 0)
+			(at 265.43 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26489,7 +26499,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 254 276.86 0)
+			(at 265.43 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27977,7 +27987,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 227.33 276.86 0)
+		(at 238.76 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -27985,7 +27995,7 @@
 		(dnp no)
 		(uuid "d499e4cb-6f97-4c67-a16d-08cbcee17b4a")
 		(property "Reference" "#PWR035"
-			(at 227.33 283.21 0)
+			(at 238.76 283.21 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27994,7 +28004,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 227.457 281.2542 0)
+			(at 238.887 281.2542 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28002,7 +28012,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 227.33 276.86 0)
+			(at 238.76 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28011,7 +28021,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 227.33 276.86 0)
+			(at 238.76 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28020,7 +28030,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 227.33 276.86 0)
+			(at 238.76 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28798,102 +28808,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 163.83 111.76 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e50bd92b-5c02-4186-bca2-c4914fb6c76b")
-		(property "Reference" "C12"
-			(at 166.37 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 166.37 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 164.7952 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C14663"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN " "CC0603KRX7R9BB104"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c198c077-23e1-4206-8fb8-f0ad30fac8e7")
-		)
-		(pin "1"
-			(uuid "3eb78b91-6604-4d89-a05c-3ff2c23c4b91")
-		)
-		(instances
-			(project "mini4x4-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "C12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3V3")
 		(at 167.64 102.87 0)
 		(unit 1)
@@ -29425,7 +29339,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:Fiducial")
-		(at 262.89 273.05 0)
+		(at 274.32 273.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -29434,7 +29348,7 @@
 		(fields_autoplaced yes)
 		(uuid "f3ab1aa7-e4e9-48bc-bfd6-e246d8da257a")
 		(property "Reference" "FID1"
-			(at 265.43 271.7799 0)
+			(at 276.86 271.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29443,7 +29357,7 @@
 			)
 		)
 		(property "Value" "Fiducial"
-			(at 265.43 274.3199 0)
+			(at 276.86 274.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29452,7 +29366,7 @@
 			)
 		)
 		(property "Footprint" "Fiducial:Fiducial_1mm_Mask3mm"
-			(at 262.89 273.05 0)
+			(at 274.32 273.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29461,7 +29375,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 262.89 273.05 0)
+			(at 274.32 273.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29470,7 +29384,7 @@
 			)
 		)
 		(property "Description" "Fiducial Marker"
-			(at 262.89 273.05 0)
+			(at 274.32 273.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29714,7 +29628,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole_Pad")
-		(at 227.33 274.32 0)
+		(at 238.76 274.32 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -29723,7 +29637,7 @@
 		(fields_autoplaced yes)
 		(uuid "f9f51a69-864a-44e3-8883-fd473cc61c91")
 		(property "Reference" "H1"
-			(at 229.87 271.7799 0)
+			(at 241.3 271.7799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29732,7 +29646,7 @@
 			)
 		)
 		(property "Value" "M3"
-			(at 229.87 274.3199 0)
+			(at 241.3 274.3199 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29741,7 +29655,7 @@
 			)
 		)
 		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_DIN965_Pad_TopBottom"
-			(at 227.33 274.32 0)
+			(at 238.76 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29750,7 +29664,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 227.33 274.32 0)
+			(at 238.76 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -29759,7 +29673,7 @@
 			)
 		)
 		(property "Description" "Mounting Hole with connection"
-			(at 227.33 274.32 0)
+			(at 238.76 274.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30407,102 +30321,6 @@
 			(project ""
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "R3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 138.43 256.54 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "ffb9bd67-e6ab-42df-825f-fd2d1ba63c90")
-		(property "Reference" "C24"
-			(at 140.97 255.27 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 140.97 257.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 139.3952 260.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 138.43 256.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 138.43 256.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C14663"
-			(at 138.43 256.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN " "CC0603KRX7R9BB104"
-			(at 138.43 256.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 138.43 256.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "4ecc46ed-b751-4740-809c-b4bf3f493ac8")
-		)
-		(pin "1"
-			(uuid "d7495461-3f15-400d-95a8-1bf0676d4c11")
-		)
-		(instances
-			(project "mini4wd-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "C24")
 					(unit 1)
 				)
 			)
