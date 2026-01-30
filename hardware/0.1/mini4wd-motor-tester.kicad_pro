@@ -273,6 +273,14 @@
         "Low side of transistor tied to GND"
       ],
       [
+        "pin_to_pin|3632200|1435100|c03a6db5-73f0-4641-b74b-488ff71e01f9|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
+        "Emitter in low side config connected to GND"
+      ],
+      [
+        "pin_to_pin|558800|2501900|5332419b-8708-4b1c-9c38-1a9fe62baf86|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
+        "Opto emitter low side connected to GND."
+      ],
+      [
         "pin_to_pin|558800|2501900|d494db3d-0e8e-41c4-8107-c67923cc0aa9|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
         "Low side of transistor tied to GND"
       ],
