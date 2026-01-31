@@ -8665,20 +8665,16 @@
 		(uuid "1dfdf91c-1c50-430b-9997-ec140a206a5f")
 	)
 	(no_connect
-		(at 209.55 83.82)
-		(uuid "2508bdc6-167b-4e85-9e74-1102f569393b")
-	)
-	(no_connect
 		(at 209.55 86.36)
 		(uuid "2a03e51f-b0f1-4708-8bdf-0a19a9963a49")
 	)
 	(no_connect
-		(at 209.55 88.9)
-		(uuid "309a0f3a-a8eb-4559-b774-739173f9c3c5")
-	)
-	(no_connect
 		(at 342.9 50.8)
 		(uuid "37e90138-65e7-4e82-b9b0-bcbed17add43")
+	)
+	(no_connect
+		(at 209.55 50.8)
+		(uuid "3c2d6d6e-86f7-413d-bd9c-319076c5081f")
 	)
 	(no_connect
 		(at 50.8 58.42)
@@ -8687,6 +8683,14 @@
 	(no_connect
 		(at 342.9 53.34)
 		(uuid "55e49bd1-e316-45ea-aab3-82af0cf3d242")
+	)
+	(no_connect
+		(at 209.55 60.96)
+		(uuid "6f076829-8418-4806-85cc-23f35fbf2132")
+	)
+	(no_connect
+		(at 209.55 53.34)
+		(uuid "706c4da3-2466-48a1-b8f3-32e5c4554cab")
 	)
 	(no_connect
 		(at 209.55 63.5)
@@ -8711,10 +8715,6 @@
 	(no_connect
 		(at 209.55 68.58)
 		(uuid "ccbd6815-6ff6-40a1-bcbb-7aff26d64624")
-	)
-	(no_connect
-		(at 209.55 91.44)
-		(uuid "d4178ccc-4e7d-4215-abb3-e44698a5f23e")
 	)
 	(no_connect
 		(at 209.55 66.04)
@@ -9334,16 +9334,6 @@
 			(type default)
 		)
 		(uuid "2b009df4-4ba6-4a1d-9aa4-2e3afb9533df")
-	)
-	(wire
-		(pts
-			(xy 198.12 53.34) (xy 209.55 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2b89df6b-1b5f-45a4-bfbc-8dc268cca4e2")
 	)
 	(wire
 		(pts
@@ -10529,6 +10519,16 @@
 			(type default)
 		)
 		(uuid "74dfecde-708d-4c0a-9548-2ce631c6c81a")
+	)
+	(wire
+		(pts
+			(xy 195.58 83.82) (xy 209.55 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76217bc9-6e9b-453b-9259-7da98f90def4")
 	)
 	(wire
 		(pts
@@ -11897,16 +11897,6 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 60.96) (xy 209.55 60.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c886e6da-23ab-48c8-9e88-17cae663642d")
-	)
-	(wire
-		(pts
 			(xy 153.67 106.68) (xy 153.67 107.95)
 		)
 		(stroke
@@ -12210,6 +12200,16 @@
 	)
 	(wire
 		(pts
+			(xy 195.58 91.44) (xy 209.55 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e257209c-ba48-427f-ba91-41bdecc5660d")
+	)
+	(wire
+		(pts
 			(xy 246.38 149.86) (xy 246.38 146.05)
 		)
 		(stroke
@@ -12217,16 +12217,6 @@
 			(type default)
 		)
 		(uuid "e313416c-6036-4032-8c58-7be0df9a8c08")
-	)
-	(wire
-		(pts
-			(xy 198.12 50.8) (xy 209.55 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e32edcc4-03c3-4802-add4-ae66dd1831c1")
 	)
 	(wire
 		(pts
@@ -12419,6 +12409,16 @@
 			(type solid)
 		)
 		(uuid "f3aa666f-2da2-499b-9aa7-45e26361febe")
+	)
+	(wire
+		(pts
+			(xy 195.58 88.9) (xy 209.55 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f43fa8f3-4185-4eae-b0b3-c8f14b3c387a")
 	)
 	(wire
 		(pts
@@ -14896,14 +14896,14 @@
 		(uuid "4dfdce64-b8b2-417c-8e8a-c4796b40f70d")
 	)
 	(label "ENCODER_SW"
-		(at 256.54 60.96 180)
+		(at 195.58 88.9 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "53110f65-87a0-4c21-a232-4240f2c478f7")
 	)
@@ -14954,14 +14954,14 @@
 		(uuid "663cfb6d-17b5-4363-ada3-f42f1180efe8")
 	)
 	(label "ENCODER_B"
-		(at 256.54 66.04 180)
+		(at 195.58 83.82 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "6d6fe4c6-a396-4e6d-8070-10ec1ed01621")
 	)
@@ -14978,7 +14978,7 @@
 		(uuid "7928a8ee-18cc-44c1-a10b-e70fdb53af4c")
 	)
 	(label "AUX_5V_EN"
-		(at 256.54 55.88 180)
+		(at 256.54 60.96 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15036,14 +15036,14 @@
 		(uuid "8cfa6537-63cf-40b5-b0fa-16b790e7cfb1")
 	)
 	(label "ENCODER_A"
-		(at 256.54 63.5 180)
+		(at 195.58 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
 			)
-			(justify right bottom)
+			(justify left bottom)
 		)
 		(uuid "90efaa27-2ddd-4c6e-8884-3277dc629c33")
 	)
@@ -15060,19 +15060,19 @@
 		(uuid "916b2265-fee2-411f-91f7-4629839164ab")
 	)
 	(label "MOTOR_IN2"
-		(at 198.12 53.34 0)
+		(at 256.54 63.5 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "a62d2772-7ced-4f5c-8c0a-af5e85b5e5ea")
 	)
 	(label "MOTOR_OUT"
-		(at 256.54 88.9 180)
+		(at 256.54 55.88 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15084,14 +15084,14 @@
 		(uuid "a828e067-13cc-42ce-9a93-9ab2db2ec90e")
 	)
 	(label "MOTOR_EN"
-		(at 198.12 60.96 0)
+		(at 256.54 88.9 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "a8a89473-c42c-4097-8f43-f5c2b4562b8b")
 	)
@@ -15166,14 +15166,14 @@
 		(uuid "c2b1f7b8-e9a6-448b-af20-66eefed24806")
 	)
 	(label "MOTOR_IN1"
-		(at 198.12 50.8 0)
+		(at 256.54 66.04 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 				(thickness 0.254)
 				(bold yes)
 			)
-			(justify left bottom)
+			(justify right bottom)
 		)
 		(uuid "c3bbb7bf-02e5-42f6-99eb-120e599e340a")
 	)
@@ -20560,16 +20560,16 @@
 	)
 	(symbol
 		(lib_id "Motor:Motor_DC")
-		(at 278.13 189.23 0)
+		(at 278.13 191.77 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "4a805cc7-7010-4749-9b55-75bbcd3bb004")
 		(property "Reference" "M1"
-			(at 283.21 190.4999 0)
+			(at 283.21 190.5001 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20578,7 +20578,7 @@
 			)
 		)
 		(property "Value" "Motor_DC"
-			(at 283.21 193.0399 0)
+			(at 283.21 187.9601 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20587,7 +20587,7 @@
 			)
 		)
 		(property "Footprint" "josh-mechanical:Mini4WD_Motor"
-			(at 278.13 191.516 0)
+			(at 278.13 189.484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20596,7 +20596,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 278.13 191.516 0)
+			(at 278.13 189.484 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20605,7 +20605,7 @@
 			)
 		)
 		(property "Description" "DC Motor"
-			(at 278.13 189.23 0)
+			(at 278.13 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20614,7 +20614,7 @@
 			)
 		)
 		(property "JLCSMT" ""
-			(at 278.13 189.23 0)
+			(at 278.13 191.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)

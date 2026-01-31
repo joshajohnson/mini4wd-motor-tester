@@ -49,7 +49,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.254
+          "min_clearance": 0.25
         }
       },
       "diff_pair_dimensions": [
@@ -59,7 +59,96 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "copper_edge_clearance|80291667|95000000|ebe3fa4c-422f-4fe1-943b-d54247be8417|a3e9006c-b1db-4da6-a6d4-653378d1cd4a",
+          "Clearance for motor pads, expected error."
+        ],
+        [
+          "copper_edge_clearance|87360549|95194665|1bffafbe-4b94-40ca-89d5-a64cb5078ec9|96fb65ef-d079-43ae-861d-936360c545f0",
+          "Clearance for motor pads, expected error."
+        ],
+        [
+          "courtyards_overlap|149305000|91505000|51936dd1-be4a-496e-a5c8-f3420ed98cf3|7c7dfd34-bf4e-4e81-acee-4e0de2b0fd37",
+          "Encoder and display are closer than desired for mechanical reasons."
+        ],
+        [
+          "courtyards_overlap|85365720|114655000|2056ffea-7abd-4029-b685-c37921433f08|7f19e2c7-03e9-4e68-806b-795fb83b75a8",
+          "Opto sensor must be placed under motor."
+        ],
+        [
+          "items_not_allowed|85850000|115550000|7f19e2c7-03e9-4e68-806b-795fb83b75a8|00000000-0000-0000-0000-000000000000",
+          "Motor footprint is strange"
+        ],
+        [
+          "lib_footprint_mismatch|135365000|111900000|1b8091c2-c910-42c1-bca7-0fd0a88ed6fe|00000000-0000-0000-0000-000000000000",
+          "Modified fooprint to increase via size, round pads, remove keepout as WiFi not used."
+        ],
+        [
+          "lib_footprint_mismatch|95540000|86500000|904941f3-cffa-4fb3-adfb-19236c436543|00000000-0000-0000-0000-000000000000",
+          "Made pads thinner to ensure mask between pins."
+        ],
+        [
+          "missing_courtyard|103000000|82200000|e5276103-ff0b-48e9-84a7-5b141a6823f1|00000000-0000-0000-0000-000000000000",
+          "Custom graphics expected warning."
+        ],
+        [
+          "missing_courtyard|125000000|121000000|d84f96e3-decc-46cb-bc21-06a87dcf46a2|00000000-0000-0000-0000-000000000000",
+          "KiBuzzard expected warning."
+        ],
+        [
+          "missing_courtyard|125000000|79100000|a566e3ab-ce5d-40ae-85a3-63bf83c5a2e7|00000000-0000-0000-0000-000000000000",
+          "KiBuzzard expected warning."
+        ],
+        [
+          "padstack|79000000|94300000|a3e9006c-b1db-4da6-a6d4-653378d1cd4a|00000000-0000-0000-0000-000000000000",
+          "No paste on motor pads"
+        ],
+        [
+          "padstack|89000000|94300000|96fb65ef-d079-43ae-861d-936360c545f0|00000000-0000-0000-0000-000000000000",
+          "No paste on motor pads"
+        ],
+        [
+          "silk_edge_clearance|148345000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|020e5592-a796-4056-9dc3-ac856679e589",
+          "USB silk goes outside board outline."
+        ],
+        [
+          "silk_edge_clearance|148345000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|e5bed2d9-f1b1-4eed-a0de-38e318c3e055",
+          "USB silk goes outside board outline."
+        ],
+        [
+          "silk_edge_clearance|157745000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|6993313e-4ea5-479a-b9ea-26a96004b85a",
+          "USB silk goes outside board outline."
+        ],
+        [
+          "silk_over_copper|127594964|79051081|04b523c6-0ea3-41be-bc03-1b1906d8ad94|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ],
+        [
+          "silk_over_copper|129649918|80290289|067a53a0-6bb8-4ce8-bc6e-fd805038784a|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ],
+        [
+          "silk_over_copper|130100953|80550000|e9dbcc2c-f8b7-4778-ba8f-eb18459d859a|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ],
+        [
+          "silk_over_copper|132490590|79083167|d96d63c5-3d04-42f1-94e4-d9d40192b121|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ],
+        [
+          "silk_over_copper|137595000|79050000|ca7a3129-2a91-4836-8535-c00f8fb0c091|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ],
+        [
+          "silk_over_copper|140100953|80550000|43a3b153-6266-40da-aa13-3de2859a97f2|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ],
+        [
+          "silk_over_copper|142490590|79083167|9ee5169b-e6b1-485c-af25-f9e9a69a12d0|00000000-0000-0000-0000-000000000000",
+          "Silk overlaps NPTH, okay."
+        ]
+      ],
       "meta": {
         "filename": "board_design_settings.json",
         "version": 2
@@ -136,7 +225,7 @@
         "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.3,
-        "min_hole_to_hole": 0.5,
+        "min_hole_to_hole": 0.3,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
@@ -248,7 +337,7 @@
           "drill": 0.4
         }
       ],
-      "zones_allow_external_fillets": false,
+      "zones_allow_external_fillets": true,
       "zones_use_no_outline": true
     },
     "ipc2581": {
@@ -530,9 +619,9 @@
       {
         "bus_width": 12,
         "clearance": 0.15,
-        "diff_pair_gap": 0.25,
+        "diff_pair_gap": 0.2,
         "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.2,
+        "diff_pair_width": 0.29,
         "line_style": 0,
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
