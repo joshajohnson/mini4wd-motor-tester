@@ -1981,6 +1981,155 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:Polyfuse"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "F"
+				(at -2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Polyfuse"
+				(at 2.54 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "resettable fuse PTC PPTC polyfuse polyswitch"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "*polyfuse* *PTC*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Polyfuse_0_1"
+				(polyline
+					(pts
+						(xy -1.524 2.54) (xy -1.524 1.524) (xy 1.524 -1.524) (xy 1.524 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -0.762 2.54)
+					(end 0.762 -2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Polyfuse_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -8213,12 +8362,6 @@
 		(uuid "02139cd0-a773-49f0-ae4b-22eaba31292d")
 	)
 	(junction
-		(at 92.71 27.94)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "097805a2-89a2-4324-b4e6-abac4fef3163")
-	)
-	(junction
 		(at 107.95 97.79)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8253,6 +8396,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "17cf8be3-7808-4933-912f-d7c943ada104")
+	)
+	(junction
+		(at 77.47 27.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1bacccf1-f61c-449d-981b-7885ca92930e")
 	)
 	(junction
 		(at 363.22 83.82)
@@ -8303,6 +8452,12 @@
 		(uuid "3cebdece-ee16-4996-b1c8-787c312bd8e3")
 	)
 	(junction
+		(at 92.71 27.94)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "413ebb5e-37fb-424b-88aa-25160c08c25d")
+	)
+	(junction
 		(at 341.63 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8349,12 +8504,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5d9ff322-dbe4-4f30-9496-f4d1b67e1526")
-	)
-	(junction
-		(at 77.47 27.94)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5ebeacd4-8a8b-4d8a-8074-efa1b5859c27")
 	)
 	(junction
 		(at 132.08 120.65)
@@ -8579,6 +8728,12 @@
 		(uuid "cd624a09-715d-47be-9db2-e58688bd3721")
 	)
 	(junction
+		(at 156.21 21.59)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cf5fed6e-d2b1-451e-aad6-cc82ab50602b")
+	)
+	(junction
 		(at 48.26 91.44)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -8791,16 +8946,6 @@
 			(type default)
 		)
 		(uuid "044fd419-9253-4b02-b76e-5aed8e5ab5fe")
-	)
-	(wire
-		(pts
-			(xy 90.17 27.94) (xy 92.71 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "04ede4e7-d87c-4acd-872d-315faf22af27")
 	)
 	(wire
 		(pts
@@ -9253,6 +9398,16 @@
 			(color 0 0 194 1)
 		)
 		(uuid "25f07bd0-792a-4eae-964f-67713f8f13a2")
+	)
+	(wire
+		(pts
+			(xy 71.12 27.94) (xy 77.47 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "262e4445-7926-44cc-b930-15fd321c37cc")
 	)
 	(wire
 		(pts
@@ -9729,7 +9884,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 27.94) (xy 100.33 27.94)
+			(xy 90.17 27.94) (xy 92.71 27.94)
 		)
 		(stroke
 			(width 0)
@@ -10207,6 +10362,16 @@
 			(type default)
 		)
 		(uuid "62099c43-8fc2-48f6-8a78-b4db616442e1")
+	)
+	(wire
+		(pts
+			(xy 92.71 27.94) (xy 100.33 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63b11f0b-c45f-44de-b611-4a1cc1178dcb")
 	)
 	(wire
 		(pts
@@ -10813,7 +10978,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 27.94) (xy 82.55 27.94)
+			(xy 50.8 27.94) (xy 63.5 27.94)
 		)
 		(stroke
 			(width 0)
@@ -11465,6 +11630,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 27.94) (xy 82.55 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad6369b7-d3ec-4e34-8f2e-ab302ccda269")
+	)
+	(wire
+		(pts
 			(xy 114.3 97.79) (xy 114.3 107.95)
 		)
 		(stroke
@@ -11833,16 +12008,6 @@
 			(type default)
 		)
 		(uuid "c5cc390f-5e38-48a8-a07d-54008ed79bdd")
-	)
-	(wire
-		(pts
-			(xy 50.8 27.94) (xy 77.47 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c5e4abb6-d812-4361-a433-3fce9d5ec3b2")
 	)
 	(wire
 		(pts
@@ -16216,6 +16381,80 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 156.21 21.59 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(uuid "01475b58-514c-4392-9f74-5402e50f4998")
+		(property "Reference" "TP14"
+			(at 160.02 19.304 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "TP"
+			(at 158.75 21.082 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 151.13 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 151.13 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 156.21 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 156.21 21.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6908cfb3-059a-4ccc-b54a-9e7350b6bb0e")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "TP14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector_Generic:Conn_01x04")
 		(at 185.42 36.83 0)
 		(mirror y)
@@ -16572,6 +16811,111 @@
 			(project ""
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "U6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 77.47 31.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0b0ed1c7-3ae6-4474-88df-b1707ff1a523")
+		(property "Reference" "C5"
+			(at 80.01 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 80.01 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 78.4352 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C440198"
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN " "GRM21BR61H106KE43L"
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 77.47 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "04bbf800-047e-4aab-ba60-bcfcff3d000e")
+		)
+		(pin "1"
+			(uuid "ab78e427-aa2f-4873-b3dd-91265ae43a29")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -17247,6 +17591,111 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C")
+		(at 163.83 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0f637436-41a2-4ea4-a11b-aaee0e0b95b6")
+		(property "Reference" "C12"
+			(at 166.37 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 166.37 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 164.7952 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C440198"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN " "GRM21BR61H106KE43L"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 163.83 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "25645e1e-f05b-46b3-9925-c5d9db7c0857")
+		)
+		(pin "1"
+			(uuid "11d56175-1bfe-407c-9d09-0de60719ef0d")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "C12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 17.78 100.33 0)
 		(unit 1)
@@ -17412,7 +17861,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "RT9080-33GJ5"
+		(property "Datasheet" "https://www.richtek.com/SaveDownload.aspx?specid=RT9080"
 			(at 134.62 27.94 0)
 			(effects
 				(font
@@ -18122,110 +18571,6 @@
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "#PWR05")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 77.47 31.75 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2114319c-26de-4406-a62d-b442b1d7f221")
-		(property "Reference" "C5"
-			(at 80.391 30.5816 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "1u"
-			(at 80.391 32.893 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 76.5048 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 77.47 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 77.47 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C15849"
-			(at 77.47 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 77.47 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN " "CL10A105KB8NNNC"
-			(at 77.47 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCSMT" ""
-			(at 77.47 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0baa04d4-e974-4b2a-a194-00c07557662e")
-		)
-		(pin "2"
-			(uuid "bd252905-e6cf-4afc-9d4a-9d878d2b1e4b")
-		)
-		(instances
-			(project "mini4x4-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "C5")
 					(unit 1)
 				)
 			)
@@ -21118,7 +21463,7 @@
 		(dnp no)
 		(uuid "501219cc-1834-4c77-8739-178b3c7c7d80")
 		(property "Reference" "TP2"
-			(at 135.89 117.094 0)
+			(at 134.874 117.094 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21126,7 +21471,7 @@
 			)
 		)
 		(property "Value" "TP"
-			(at 134.62 118.872 0)
+			(at 134.366 118.872 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24136,110 +24481,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 92.71 31.75 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7cdf00a3-a546-4bd2-860b-da28563e0cb1")
-		(property "Reference" "C6"
-			(at 95.631 30.5816 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "1u"
-			(at 95.631 32.893 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 91.7448 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 92.71 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 92.71 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C15849"
-			(at 92.71 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 92.71 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN " "CL10A105KB8NNNC"
-			(at 92.71 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCSMT" ""
-			(at 92.71 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cc28d439-6f67-4fe6-99c6-6a4ee4e4d7a7")
-		)
-		(pin "2"
-			(uuid "9647a0cb-765e-41e0-acd3-184738ff4e27")
-		)
-		(instances
-			(project "mini4x4-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "C6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 77.47 35.56 0)
 		(unit 1)
@@ -25411,6 +25652,102 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:Polyfuse")
+		(at 67.31 27.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "99e649f7-1dea-4229-a9e3-c9d116ed474a")
+		(property "Reference" "F1"
+			(at 67.31 21.59 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2A"
+			(at 67.31 24.13 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+			(at 72.39 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 67.31 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
+			(at 67.31 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C2153712"
+			(at 67.31 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN " "NANOSMDC200F-2"
+			(at 67.31 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Littelfuse"
+			(at 67.31 27.94 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c65de1d0-1c6f-4d7a-bc29-c9a1b2c22920")
+		)
+		(pin "1"
+			(uuid "8ec66e1c-fe6c-4035-98b2-bdeb3caaffeb")
+		)
+		(instances
+			(project ""
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "F1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 219.71 162.56 0)
 		(unit 1)
@@ -25470,110 +25807,6 @@
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "#PWR031")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 163.83 111.76 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a232b7cd-1ece-4bff-8486-23651dff3787")
-		(property "Reference" "C12"
-			(at 166.751 110.5916 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "1u"
-			(at 166.751 112.903 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 162.8648 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "LCSC" "C15849"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Samsung Electro-Mechanics"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN " "CL10A105KB8NNNC"
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCSMT" ""
-			(at 163.83 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "0f57e945-9370-4f66-84d0-b7d1bff2ef86")
-		)
-		(pin "1"
-			(uuid "0ba8ac63-628c-468b-86f1-0244f5f4f836")
-		)
-		(instances
-			(project "mini4wd-motor-tester"
-				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
-					(reference "C12")
 					(unit 1)
 				)
 			)
@@ -28483,6 +28716,111 @@
 			(project "mini4x4-motor-tester"
 				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
 					(reference "R20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 92.71 31.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ca318265-8a0d-4218-8784-59598a12623b")
+		(property "Reference" "C6"
+			(at 95.25 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10u"
+			(at 95.25 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 93.6752 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C440198"
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN " "GRM21BR61H106KE43L"
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCSMT" ""
+			(at 92.71 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "72161f7a-2e0a-4a45-a32a-34520709ab56")
+		)
+		(pin "1"
+			(uuid "6092fca5-cb25-4e09-b7eb-24068ebbd64c")
+		)
+		(instances
+			(project "mini4wd-motor-tester"
+				(path "/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad"
+					(reference "C6")
 					(unit 1)
 				)
 			)

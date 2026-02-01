@@ -65,8 +65,8 @@
           "Clearance for motor pads, expected error."
         ],
         [
-          "copper_edge_clearance|87360549|95194665|1bffafbe-4b94-40ca-89d5-a64cb5078ec9|96fb65ef-d079-43ae-861d-936360c545f0",
-          "Clearance for motor pads, expected error."
+          "copper_edge_clearance|87708333|95000000|01eed6e3-e3a0-41a6-9821-0975d0479f65|96fb65ef-d079-43ae-861d-936360c545f0",
+          "Motor pads need to be closer than normal to board cutout."
         ],
         [
           "courtyards_overlap|149305000|91505000|51936dd1-be4a-496e-a5c8-f3420ed98cf3|7c7dfd34-bf4e-4e81-acee-4e0de2b0fd37",
@@ -121,32 +121,32 @@
           "USB silk goes outside board outline."
         ],
         [
-          "silk_over_copper|127594964|79051081|04b523c6-0ea3-41be-bc03-1b1906d8ad94|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|127595000|79050000|04b523c6-0ea3-41be-bc03-1b1906d8ad94|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ],
         [
-          "silk_over_copper|129649918|80290289|067a53a0-6bb8-4ce8-bc6e-fd805038784a|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|129644825|80273599|067a53a0-6bb8-4ce8-bc6e-fd805038784a|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ],
         [
-          "silk_over_copper|130100953|80550000|e9dbcc2c-f8b7-4778-ba8f-eb18459d859a|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|130100952|80550000|e9dbcc2c-f8b7-4778-ba8f-eb18459d859a|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ],
         [
-          "silk_over_copper|132490590|79083167|d96d63c5-3d04-42f1-94e4-d9d40192b121|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|132495000|79050000|d96d63c5-3d04-42f1-94e4-d9d40192b121|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ],
         [
-          "silk_over_copper|137595000|79050000|ca7a3129-2a91-4836-8535-c00f8fb0c091|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|137594614|79058828|ca7a3129-2a91-4836-8535-c00f8fb0c091|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ],
         [
-          "silk_over_copper|140100953|80550000|43a3b153-6266-40da-aa13-3de2859a97f2|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|140100952|80550000|43a3b153-6266-40da-aa13-3de2859a97f2|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ],
         [
-          "silk_over_copper|142490590|79083167|9ee5169b-e6b1-485c-af25-f9e9a69a12d0|00000000-0000-0000-0000-000000000000",
-          "Silk overlaps NPTH, okay."
+          "silk_over_copper|142495000|79050000|9ee5169b-e6b1-485c-af25-f9e9a69a12d0|00000000-0000-0000-0000-000000000000",
+          "Silk over NPTH"
         ]
       ],
       "meta": {
@@ -236,7 +236,7 @@
         "min_track_width": 0.15,
         "min_via_annular_width": 0.125,
         "min_via_diameter": 0.5,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
