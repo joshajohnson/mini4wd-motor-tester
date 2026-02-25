@@ -1,38 +1,51 @@
+# Thanks to Matt Trentini: https://github.com/mattytrentini/micropython-tmp1075
+
 from machine import I2C
+from micropython import const
 
 class TMP1075:
-    I2C_ADDR = 0x48
-    REG_TEMP = 0x00
-    REG_CONFIG = 0x01
-    REG_DIEID = 0x0F
 
-    def __init__(self, i2c: I2C, addr: int = I2C_ADDR):
+    '''
+    MicroPython Driver for the TI TMP1075 temperature sensor.
+
+    Example:
+
+        i2c = machine.I2C(sda=machine.Pin(8), scl=machine.Pin(9))
+        tmp1075 = TMP1075(i2c)
+        tmp1075.get_temperature()
+
+    See datasheet: http://www.ti.com/lit/ds/symlink/tmp1075.pdf
+    
+    '''
+
+    REG_TEMP = const(0x00)
+    REG_CONFIG = const(0x01)
+    REG_LLIM = const(0x02)
+    REG_HLIM = const(0x03)
+    REG_DIEID = const(0x0F)
+
+    def __init__(self, i2c=I2C, addr=0x48):
+        if not i2c:
+            raise ValueError('I2C object needed')
         self.i2c = i2c
-        self.addr = addr
+        self.addr = addr			  
+        self.check_device()
 
-    def get_temp_raw(self):
-        data = self.i2c.readfrom_mem(self.addr, self.REG_TEMP, 2)
-        raw = (data[0] << 8) | data[1]
-        # 12-bit resolution, left-justified in 16 bits
-        raw = raw >> 4
-        # Handle negative temperatures (two's complement)
-        if raw & 0x800:
-            raw -= 1 << 12
-        return raw
+    def check_device(self):
+        ''' Check comms, DIE ID should always be 0x7500 '''
+        id = self.i2c.readfrom_mem(self.addr, TMP1075.REG_DIEID, 2)
+        if (id[0] << 8 + id[1]) != 0x7500:
+            raise ValueError(f'Incorrect DIE ID (got {hex((id[0] << 8) + id[1])}, expected 0x7500) or bad I2C comms')
 
     def get_temperature(self):
-        raw = self.get_temp_raw()
-        temp_c = raw * 0.0625
-        return temp_c
+        data = self.i2c.readfrom_mem(self.addr, TMP1075.REG_TEMP, 2)
+        # 12-bit resolution, left-justified in 16 bits
+        raw = (data[0] << 8) | data[1]
+        raw = raw >> 4
+        # Handle negative temperatures
+        if raw & 0x800:
+            raw -= 1 << 12
+        # Convert to deg c
+        temp = raw * 0.0625
+        return temp
 
-    def set_config(self, config):
-        buf = bytearray([(config >> 8) & 0xFF, config & 0xFF])
-        self.i2c.writeto_mem(self.addr, self.REG_CONFIG, buf)
-
-    def get_config(self):
-        data = self.i2c.readfrom_mem(self.addr, self.REG_CONFIG, 2)
-        return (data[0] << 8) | data[1]
-    
-    def get_die_id(self):
-        data = self.i2c.readfrom_mem(self.addr, self.REG_DIEID, 2)
-        return (data[0] << 8) | data[1]

@@ -1,25 +1,32 @@
 import machine
-import tmp1075
 import time
 
-i2c = machine.I2C(scl=machine.Pin(9), sda=machine.Pin(8))
+# I2C Drivers
+import tmp1075
 
-print('Scan i2c bus...')
-devices = i2c.scan()
+# Init I2C
+i2c = machine.I2C(sda=machine.Pin(8), scl=machine.Pin(9))
 
-if len(devices) == 0:
-  print("No i2c device !")
-else:
-  print('i2c devices found:',len(devices))
+def i2cdetect(i2c):
+  print("     " + " ".join(f"{x:02x}" for x in range(16)))
+  devices = set(i2c.scan())
+  for row in range(8):
+    line = f"{row << 4:02x}:"
+    for col in range(16):
+      addr = (row << 4) | col
+      if addr < 0x03 or addr > 0x77:
+        line += "   "
+      elif addr in devices:
+        line += f" {addr:02x}"
+      else:
+        line += " --"
+    print(line)
 
-  for device in devices:  
-    print("Address: ",hex(device))
+i2cdetect(i2c)
 
 temp_sensor = tmp1075.TMP1075(i2c)
 
-print(hex(temp_sensor.get_die_id()))
-
 while True:
-    temp_c = temp_sensor.get_temperature()
-    print("Temperature: {:.2f} °C".format(temp_c))
-    time.sleep(1)
+  temp = temp_sensor.get_temperature()
+  print("Temperature: {:.2f} °C".format(temp))
+  time.sleep(1)
