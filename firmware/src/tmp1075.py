@@ -24,21 +24,20 @@ class TMP1075:
     REG_HLIM = const(0x03)
     REG_DIEID = const(0x0F)
 
-    def __init__(self, i2c=I2C, addr=0x48):
-        if not i2c:
-            raise ValueError('I2C object needed')
+    def __init__(self, i2c=I2C, addr: int = 0x48):
         self.i2c = i2c
         self.addr = addr			  
-        self.check_device()
+        self._check_device()
 
-    def check_device(self):
+    def _check_device(self):
         ''' Check comms, DIE ID should always be 0x7500 '''
-        id = self.i2c.readfrom_mem(self.addr, TMP1075.REG_DIEID, 2)
+        id = self.i2c.readfrom_mem(self.addr, self.REG_DIEID, 2)
         if (id[0] << 8 + id[1]) != 0x7500:
             raise ValueError(f'Incorrect DIE ID (got {hex((id[0] << 8) + id[1])}, expected 0x7500) or bad I2C comms')
 
     def get_temperature(self):
-        data = self.i2c.readfrom_mem(self.addr, TMP1075.REG_TEMP, 2)
+        ''' Get current temperature in degrees Celsius '''
+        data = self.i2c.readfrom_mem(self.addr, self.REG_TEMP, 2)
         # 12-bit resolution, left-justified in 16 bits
         raw = (data[0] << 8) | data[1]
         raw = raw >> 4
