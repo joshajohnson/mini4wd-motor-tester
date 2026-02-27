@@ -27,7 +27,6 @@ class MCP4725:
         """
         Set raw DAC output value (12 bit integer, 0-4095)
         Fast mode, does not write EEPROM.
-        :param value: 12-bit integer (0-4095)
         """
         value = max(0, min(4095, int(value)))
         buf = bytearray(3)
@@ -44,8 +43,7 @@ class MCP4725:
     def set_voltage(self, voltage: float) -> None:
         """
         Set DAC output voltage.
-        NOTE: Cannot truly measure voltage, only used as a shorthand based on the reference voltage.
-        :param voltage: Desired output voltage (0 to VCC)
+        NOTE: Cannot truly set voltage, only used as a shorthand based on the reference voltage.
         """
         value = self._voltage_to_value(voltage)
         self.set_value(value)
@@ -54,7 +52,6 @@ class MCP4725:
         """
         Get current DAC output voltage.
         NOTE: Cannot truly measure voltage, only used as a shorthand based on the reference voltage.
-        :return: Current voltage as float
         """
         value = self.get_value()
         return self._value_to_voltage(value)
