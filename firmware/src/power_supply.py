@@ -56,7 +56,14 @@ class PSU:
         '''Measure output voltage using current sensor'''
         return self.imon.get_bus_voltage()
     
-    def get_current(self):
-        '''Measure output current using current sensor'''
-        return self.imon.get_current()
+    def get_current(self, n_samples: int = 1):
+        '''
+        Measure output current using current sensor
+        n_samples: number of samples to average, default 1 (no averaging)
+        '''
+        cumsum = 0
+        for _ in range(n_samples):
+            cumsum += self.imon.get_current()
+
+        return cumsum / n_samples
 

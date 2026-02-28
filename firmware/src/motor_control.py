@@ -14,6 +14,8 @@ class MOTORCTRL:
         motor.reverse()
         motor.brake()
         motor.disable()
+
+    Datasheet: https://www.ti.com/lit/ds/symlink/drv8837.pdf
     
     '''
 
@@ -30,28 +32,17 @@ class MOTORCTRL:
         '''Put motor to sleep'''
         self.motor_en.value(0)
 
-    def coast(self):
-        '''Coast motor (free run)'''
-        self.motor_in1 = Pin(self.motor_in1, Pin.IN)
-        self.motor_in2 = Pin(self.motor_in2, Pin.IN)
-
     def forward(self):
         '''Set motor direction forward'''
-        self.motor_in1 = Pin(self.motor_in1, Pin.OUT, Pin.PULL_UP)
-        self.motor_in2 = Pin(self.motor_in2, Pin.OUT, Pin.PULL_DOWN)
         self.motor_in1.value(1)
         self.motor_in2.value(0)
 
     def reverse(self):
         '''Set motor direction reverse'''
-        self.motor_in1 = Pin(self.motor_in1, Pin.OUT, Pin.PULL_DOWN)
-        self.motor_in2 = Pin(self.motor_in2, Pin.OUT, Pin.PULL_UP)
         self.motor_in1.value(0)
         self.motor_in2.value(1)
 
     def brake(self):
         '''Brake motor'''
-        self.motor_in1 = Pin(self.motor_in1, Pin.OUT, Pin.PULL_DOWN)
-        self.motor_in2 = Pin(self.motor_in2, Pin.OUT, Pin.PULL_DOWN)
         self.motor_in1.value(0)
         self.motor_in2.value(0)
