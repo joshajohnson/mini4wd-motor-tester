@@ -11,7 +11,7 @@ class TMP1075:
     Example:
 
         i2c = machine.I2C(sda=machine.Pin(8), scl=machine.Pin(9))
-        tmp1075 = TMP1075(i2c)
+        tmp1075 = TMP1075(i2c, addr=0x48)
         tmp1075.get_temperature()
 
     See datasheet: http://www.ti.com/lit/ds/symlink/tmp1075.pdf

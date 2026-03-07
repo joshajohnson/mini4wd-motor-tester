@@ -9,17 +9,17 @@
 #   https://github.com/MikeTeachman/micropython-rotary
 
 from machine import Pin
-from rotary import ROTARY
+from rotary import Rotary
 from sys import platform
 
-class ROTARYIRQ(ROTARY):
+class RotaryIRQ(Rotary):
 
     '''
     MicroPython Driver for rotary encoders.
 
     Example:
 
-        r = rotary_irq_esp.ROTARYIRQ()
+        r = rotary_irq_esp.RotaryIRQ()
 
         val_old = r.value()
         while True:

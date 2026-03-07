@@ -11,7 +11,7 @@ class PSU:
 
     Example:
 
-        psu = PSU(i2c, dac_addr=0x60, imon_addr=0x40)
+        psu = PSU(i2c, en_pin=16, dac_addr=0x60, imon_addr=0x40)
         psu.enable()
         psu.disable()
         psu.set_voltage(1.65)  # Set regulator output voltage to 1.65V
