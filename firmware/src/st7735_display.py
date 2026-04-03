@@ -4,7 +4,7 @@ import machine
 import st7735
 import lvgl as lv
 
-class ST7735:
+class ST7735_display:
 
     '''
     MicroPython Driver for the ST7735 TFT LCD Display.
@@ -17,7 +17,7 @@ class ST7735:
 
     Example:
 
-    display = st7735_display.ST7735()
+    display = st7735.ST7735_display()
     display.demo()
     
     '''

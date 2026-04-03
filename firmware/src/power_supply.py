@@ -20,7 +20,7 @@ class PSU:
     
     '''
 
-    def __init__(self, i2c=I2C, en_pin: int = 16, dac_addr: int = 0x60, imon_addr: int = 0x40):
+    def __init__(self, i2c=I2C, en_pin: int = None, dac_addr: int = None, imon_addr: int = None):
         if not i2c:
             raise ValueError('I2C object needed')
         self.i2c = i2c

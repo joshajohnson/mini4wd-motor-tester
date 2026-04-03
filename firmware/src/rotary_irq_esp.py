@@ -33,8 +33,8 @@ class RotaryIRQ(Rotary):
     
     '''
 
-    def __init__(self, pin_num_clk: int = 45, pin_num_dt: int = 48, min_val: int =0, max_val: int = 10, incr: int = 1,
-                 reverse: bool = False, range_mode: int = ROTARY.RANGE_UNBOUNDED, 
+    def __init__(self, pin_num_clk: int = None, pin_num_dt: int = None, min_val: int = 0, max_val: int = 10, incr: int = 1,
+                 reverse: bool = False, range_mode: int = Rotary.RANGE_UNBOUNDED, 
                  pull_up: bool = False, half_step: bool = False, invert: bool = False):
 
         super().__init__(min_val, max_val, incr, reverse, range_mode, half_step, invert)

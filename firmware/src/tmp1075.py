@@ -24,7 +24,7 @@ class TMP1075:
     REG_HLIM = const(0x03)
     REG_DIEID = const(0x0F)
 
-    def __init__(self, i2c=I2C, addr: int = 0x48):
+    def __init__(self, i2c=I2C, addr: int = None):
         self.i2c = i2c
         self.addr = addr			  
         self._check_device()

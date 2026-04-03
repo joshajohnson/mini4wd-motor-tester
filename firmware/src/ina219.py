@@ -68,7 +68,7 @@ class INA219:
     CONFIG_MODE_BVOLT_CONTINUOUS = const(0x0006)
     CONFIG_MODE_SANDBVOLT_CONTINUOUS = const(0x0007)
 
-    def __init__(self, i2c=I2C, addr: int = 0x40):
+    def __init__(self, i2c=I2C, addr: int = None):
         self.i2c = i2c
         self.addr = addr
 

@@ -18,7 +18,7 @@ class MCP4725:
     
     '''
 
-    def __init__(self, i2c=I2C, addr: int = 0x60, vcc: float = 3.3):
+    def __init__(self, i2c=I2C, addr: int = None, vcc: float = 3.3):
         self.i2c = i2c
         self.addr = addr
         self.vcc = vcc

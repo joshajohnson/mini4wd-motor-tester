@@ -19,7 +19,7 @@ class DRV8837:
     
     '''
 
-    def __init__ (self, motor_en: int = 15, motor_in1: int = 6, motor_in2: int = 5):
+    def __init__ (self, motor_en: int = None, motor_in1: int = None, motor_in2: int = None):
         self.motor_en = Pin(motor_en, Pin.OUT, Pin.PULL_DOWN)
         self.motor_in1 = Pin(motor_in1, Pin.OUT, Pin.PULL_DOWN)
         self.motor_in2 = Pin(motor_in2, Pin.OUT, Pin.PULL_DOWN)

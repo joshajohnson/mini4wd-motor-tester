@@ -47,6 +47,7 @@ class MotorControl:
         self.drv = drv
         self.rpm = rpm
         self.temp = temp
+        
         # Soft start
         self.brake_time_ms = int(brake_time * 1000)
         self.ramp_rate = ramp_rate
@@ -62,10 +63,10 @@ class MotorControl:
         self.target_voltage_mv = self.VOLTAGE_MIN_MV
         # Current Averaging
         self.current_samples_100ms = collections.deque((), 10)
-        self.current_samples_1s = collections.deque((), 100)
+        self.current_samples_1s = collections.deque((), 10)
+        self.current_samples_10s = collections.deque((), 10)
         self.current_last_sample_time = time.ticks_ms()
-        self.current_last_avg = (0.0, 0.0)
-        # RPM Averaging
+        self.current_last_avg = (0.0, 0.0, 0.0)
 
         # Set default states
         self.psu.disable()
@@ -148,20 +149,42 @@ class MotorControl:
         '''
         now = time.ticks_ms()
         if time.ticks_diff(now, self.current_last_sample_time) >= 10:
-            current = self.psu.get_current(10) # This gets rid of the very high frequency noise
-            self.current_samples_100ms.append(current)
-            self.current_samples_1s.append(current)
+            current = self.psu.get_current(10) # This gets rid of the high frequency commutation noise
             self.current_last_sample_time = now
-
+            
+            # The 100ms average is directly averaging 10 x 10ms samples
+            self.current_samples_100ms.append(current)
             avg_100ms = sum(self.current_samples_100ms) / len(self.current_samples_100ms)
+
+            # The 1s and 10s averages are using the 100ms (and 1s) averages to keep the array size down
+            self.current_samples_1s.append(self.current_samples_100ms[-1])
             avg_1s = sum(self.current_samples_1s) / len(self.current_samples_1s)
-            self.current_last_avg = (avg_100ms, avg_1s)
+
+            self.current_samples_10s.append(self.current_samples_1s[-1])
+            avg_10s = sum(self.current_samples_10s) / len(self.current_samples_10s)
+
+            self.current_last_avg = (avg_100ms, avg_1s, avg_10s)
 
     def get_current_100ms(self):
         return self.current_last_avg[0]
     
     def get_current_1s(self):
         return self.current_last_avg[1]
+    
+    def get_current_10s(self):
+        return self.current_last_avg[2]
+    
+    def update_rpm(self):
+        self.rpm.update_pulse_count()
+    
+    def get_rpm_100ms(self):
+        return self.rpm.get_rpm_100ms()
+    
+    def get_rpm_1s(self):
+        return self.rpm.get_rpm_1s()
+    
+    def get_rpm_10s(self):
+        return self.rpm.get_rpm_10s()
     
     def get_temp(self):
         ''''
