@@ -49,7 +49,7 @@
         "silk_text_upright": false,
         "zones": {
           "45_degree_only": false,
-          "min_clearance": 0.2
+          "min_clearance": 0.0
         }
       },
       "diff_pair_dimensions": [
@@ -73,20 +73,12 @@
           "TP is an alternate for the motor"
         ],
         [
-          "courtyards_overlap|83340607|118855000|2056ffea-7abd-4029-b685-c37921433f08|7f19e2c7-03e9-4e68-806b-795fb83b75a8",
-          "Sensor needs to live under the motor shaft"
-        ],
-        [
           "courtyards_overlap|92471777|88663304|7f19e2c7-03e9-4e68-806b-795fb83b75a8|cb95cc75-0f9e-4602-835e-078f0af3705e",
           "TP is an alternate for the motor"
         ],
         [
           "courtyards_overlap|95495000|98719388|7f19e2c7-03e9-4e68-806b-795fb83b75a8|f39b897f-99f1-4c16-b096-98aaf42ae413",
           "MH is close but not touching motor"
-        ],
-        [
-          "items_not_allowed|85500000|119750000|7f19e2c7-03e9-4e68-806b-795fb83b75a8|00000000-0000-0000-0000-000000000000",
-          "Motor footprint is strange"
         ],
         [
           "lib_footprint_mismatch|135365000|111900000|1b8091c2-c910-42c1-bca7-0fd0a88ed6fe|00000000-0000-0000-0000-000000000000",
@@ -101,10 +93,6 @@
           "KiBuzzard expected warning."
         ],
         [
-          "missing_courtyard|92912320|122133517|e5276103-ff0b-48e9-84a7-5b141a6823f1|00000000-0000-0000-0000-000000000000",
-          "Text so no courtyard"
-        ],
-        [
           "padstack|76600000|87050000|a3e9006c-b1db-4da6-a6d4-653378d1cd4a|00000000-0000-0000-0000-000000000000",
           "Padstack is by design"
         ],
@@ -117,20 +105,12 @@
           "USB silk goes outside board outline."
         ],
         [
-          "silk_edge_clearance|148345000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|e5bed2d9-f1b1-4eed-a0de-38e318c3e055",
-          "USB silk goes outside board outline."
-        ],
-        [
           "silk_edge_clearance|157745000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|6993313e-4ea5-479a-b9ea-26a96004b85a",
           "USB silk goes outside board outline."
         ],
         [
           "silk_over_copper|129644825|80273599|067a53a0-6bb8-4ce8-bc6e-fd805038784a|00000000-0000-0000-0000-000000000000",
           "Silk over NPTH"
-        ],
-        [
-          "zones_intersect|84000000|91500000|8c20c3a0-dacc-46dd-a400-dfbec39d9e68|1027a425-28dc-4965-8a7a-5f248831debe",
-          "Polygon with a hole in the middle"
         ]
       ],
       "meta": {
@@ -634,7 +614,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "4wd-motor-tester.step",
+      "step": "../../mechanical/0.2/4wd-motor-tester.step",
       "svg": "",
       "vrml": ""
     },
