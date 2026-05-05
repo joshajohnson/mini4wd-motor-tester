@@ -73,12 +73,20 @@
           "TP is an alternate for the motor"
         ],
         [
+          "courtyards_overlap|84558405|116805000|2056ffea-7abd-4029-b685-c37921433f08|7f19e2c7-03e9-4e68-806b-795fb83b75a8",
+          "Sensor has to live under motor shaft"
+        ],
+        [
           "courtyards_overlap|92471777|88663304|7f19e2c7-03e9-4e68-806b-795fb83b75a8|cb95cc75-0f9e-4602-835e-078f0af3705e",
           "TP is an alternate for the motor"
         ],
         [
           "courtyards_overlap|95495000|98719388|7f19e2c7-03e9-4e68-806b-795fb83b75a8|f39b897f-99f1-4c16-b096-98aaf42ae413",
           "MH is close but not touching motor"
+        ],
+        [
+          "items_not_allowed|85500000|117700000|7f19e2c7-03e9-4e68-806b-795fb83b75a8|00000000-0000-0000-0000-000000000000",
+          "Pads for motor under motor footprint"
         ],
         [
           "lib_footprint_mismatch|135365000|111900000|1b8091c2-c910-42c1-bca7-0fd0a88ed6fe|00000000-0000-0000-0000-000000000000",
@@ -93,6 +101,10 @@
           "KiBuzzard expected warning."
         ],
         [
+          "missing_courtyard|86825207|122126095|e5276103-ff0b-48e9-84a7-5b141a6823f1|00000000-0000-0000-0000-000000000000",
+          "Text footprint, so no courtyard"
+        ],
+        [
           "padstack|76600000|87050000|a3e9006c-b1db-4da6-a6d4-653378d1cd4a|00000000-0000-0000-0000-000000000000",
           "Padstack is by design"
         ],
@@ -101,12 +113,20 @@
           "Padstack is by design"
         ],
         [
+          "silk_edge_clearance|102560000|124000000|ea42265b-b51b-45dc-b62d-ea9329dfba2a|36d93c9a-273f-43ac-b36e-c03233127012",
+          "Can't edit footprint locally, will have to live with this"
+        ],
+        [
           "silk_edge_clearance|148345000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|020e5592-a796-4056-9dc3-ac856679e589",
           "USB silk goes outside board outline."
         ],
         [
           "silk_edge_clearance|157745000|76000000|fe2fd741-eb49-4a9e-9446-dda45bd59e7c|6993313e-4ea5-479a-b9ea-26a96004b85a",
           "USB silk goes outside board outline."
+        ],
+        [
+          "silk_edge_clearance|94940000|124000000|ea42265b-b51b-45dc-b62d-ea9329dfba2a|784fa865-cdb0-46b3-84fa-2feb9fd2f9db",
+          "Can't edit footprint locally, will have to live with this"
         ],
         [
           "silk_over_copper|129644825|80273599|067a53a0-6bb8-4ce8-bc6e-fd805038784a|00000000-0000-0000-0000-000000000000",
@@ -322,12 +342,20 @@
   "erc": {
     "erc_exclusions": [
       [
+        "pin_to_pin|3098800|1498600|646bff00-dbf8-47c6-a6b8-eb1089bb211f|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
+        "Low side of NPN tied to GND."
+      ],
+      [
         "pin_to_pin|3632200|1435100|814d55b7-d963-4961-89b0-fdef131f4884|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
         "Low side of transistor tied to GND"
       ],
       [
         "pin_to_pin|3632200|1435100|c03a6db5-73f0-4641-b74b-488ff71e01f9|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
         "Emitter in low side config connected to GND"
+      ],
+      [
+        "pin_to_pin|406400|2501900|5332419b-8708-4b1c-9c38-1a9fe62baf86|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
+        "Low side of NPN tied to GND."
       ],
       [
         "pin_to_pin|558800|2501900|5332419b-8708-4b1c-9c38-1a9fe62baf86|daaf0081-43e6-410b-85dc-4455fcbb0890|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
@@ -344,6 +372,10 @@
       [
         "pin_to_pin|800100|977900|734821ed-4d8e-4088-87af-a89688a2e8c2|053b5b0b-30eb-4837-89f4-95ac32561bc6|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad",
         "Power pins ganged together on buck reg"
+      ],
+      [
+        "power_pin_not_driven|2197100|1816100|1159fcfb-7bd1-44e4-9352-cf543f2d6ce2|00000000-0000-0000-0000-000000000000|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|",
+        "Fed from shunt resistor"
       ],
       [
         "power_pin_not_driven|2501900|1816100|1159fcfb-7bd1-44e4-9352-cf543f2d6ce2|00000000-0000-0000-0000-000000000000|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|/5d80fb7d-ae13-4e08-ba61-7e26fe6662ad|",
@@ -786,7 +818,7 @@
       "workbook_filename": ""
     },
     "page_layout_descr_file": "",
-    "plot_directory": "C:/Users/Josh/Downloads/",
+    "plot_directory": "production/",
     "space_save_all_events": true,
     "spice_adjust_passive_values": false,
     "spice_current_sheet_as_root": false,

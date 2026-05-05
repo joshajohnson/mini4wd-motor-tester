@@ -8472,6 +8472,28 @@
 		)
 		(uuid "f7498d8e-6af9-4f1b-94ca-0018f212256b")
 	)
+	(text_box "VREF set by RV2, default VCC/2\nHysteresis = +/- 185mV\n\nTIDU020, Section 2.1\nRh/Rx = 1.465/(1.835-1.465) = 4\nRy/Rx = 1.465/(3.3-1.835) = 1\nRx = 50K, Rh = 200K"
+		(exclude_from_sim no)
+		(at 363.22 146.05 0)
+		(size 39.37 15.24)
+		(margins 0.9525 0.9525 0.9525 0.9525)
+		(stroke
+			(width -0.0001)
+			(type solid)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.254)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "176b4ab2-235d-45a0-b0b4-57e7248f1e33")
+	)
 	(text_box "INPUT:\nIf max = 20mA\nVf = 1.4V\nVin = 5V\nR = 200R for If = 19mA\n\nOUTPUT:\n50uA min, req min 47K"
 		(exclude_from_sim no)
 		(at 290.83 153.67 0)
@@ -8538,28 +8560,6 @@
 		)
 		(uuid "aae1a445-55dc-40bd-ac43-a66da03d0a72")
 	)
-	(text_box "VREF set by RV2, default VCC/2\nHysteresis = +/- 175mV\n\nTIDU020, Section 2.1\nRh/Rx = 1.475/(1.825-1.475) = 4.2\nRy/Rx = 1.475/(3.3-1.825) = 1\nRx = 50K, Rh = 210.7K"
-		(exclude_from_sim no)
-		(at 363.22 147.32 0)
-		(size 39.37 15.24)
-		(margins 0.9525 0.9525 0.9525 0.9525)
-		(stroke
-			(width -0.0001)
-			(type solid)
-		)
-		(fill
-			(type none)
-		)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.254)
-				(bold yes)
-			)
-			(justify left top)
-		)
-		(uuid "d7b68940-9591-45c7-b6c1-2941c7031f0e")
-	)
 	(text_box "IMAX = 2A\nRshunt = 10mR\nVdrop = 20mV (< 40mV FS)\nP = 2^2 * 10m\n  = 40mW"
 		(exclude_from_sim no)
 		(at 228.6 147.32 0)
@@ -8582,7 +8582,7 @@
 		)
 		(uuid "ed1c0de8-ba0b-4d7a-93d3-dfa4f5db16a8")
 	)
-	(text_box "VREF set by RV2, default VCC/2\nHysteresis = +/- 175mV\n\nTIDU020, Section 2.1\nRh/Rx = 1.475/(1.825-1.475) = 4.2\nRy/Rx = 1.475/(3.3-1.825) = 1\nRx = 50K, Rh = 210.7K"
+	(text_box "VREF set by RV2, default VCC/2\nHysteresis = +/- 185mV\n\nTIDU020, Section 2.1\nRh/Rx = 1.465/(1.835-1.465) = 4\nRy/Rx = 1.465/(3.3-1.835) = 1\nRx = 50K, Rh = 200K"
 		(exclude_from_sim no)
 		(at 67.31 262.89 0)
 		(size 39.37 15.24)
