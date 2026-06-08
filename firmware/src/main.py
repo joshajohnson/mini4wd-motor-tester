@@ -7,33 +7,26 @@ from pulse_counter import PulseCounter
 from rotary_irq_esp import RotaryIRQ
 from st7735_display import ST7735_display
 from button import BUTTON
+from ui import UI
+import time
 
-# Init I2C
+time.sleep(3) # Allow time to connect to REPLY after a reset
+
+# Init all the things
 i2c = I2C(sda=Pin(8), scl=Pin(9))
 
-# Init Display
-# display = ST7735_display()
+display = ST7735_display()
 
-# Init misc GPIO
 led = Pin(0, Pin.OUT, Pin.PULL_DOWN)
+# .on_double_press(press_handler) \
+# .on_press_for(press_handler, 1000)
 
-def press_handler(btn, pattern):
-    print("button id {} ".format(btn.get_id()), end="")
-    if pattern == BUTTON.SINGLE_PRESS:
-        print("pressed.")
-    elif pattern == BUTTON.DOUBLE_PRESS:
-        print("double pressed.")
-    elif pattern == BUTTON.LONG_PRESS:
-        print("long pressed.")
-btn = BUTTON(pin = 47)
-btn.on_press(press_handler) \
-    .on_double_press(press_handler) \
-    .on_press_for(press_handler, 1000)
-
+# Rotary encoder including button
 rotary_enc = RotaryIRQ(pin_num_clk=45, pin_num_dt=48)
+enc_btn = BUTTON(pin=47)
 
 # Wheel RPM Sensor
-wheel = PulseCounter(pin = 1)
+wheel_sensor = PulseCounter(pin=1)
 
 # Motor and related bits
 psu = PSU(i2c, en_pin=16, dac_addr=0x60, imon_addr=0x40)
@@ -43,27 +36,30 @@ rpm = PulseCounter(pin=2)
 
 motor = MotorControl(psu, drv, rpm, tmp)
 
-def set_motor(mode, voltage):
-    motor.set_state(mode, voltage)
+# Launch UI
+app = UI(display)
+app.show_menu(psu, motor, tmp, rotary_enc, enc_btn, wheel_sensor)
 
-def loop():
-    enc_old = rotary_enc.value()
-    while True:
-        # Need to call the below to keep the motor state updated
-        motor.update_state()
-        motor.update_current()
-        motor.update_rpm()
+# def set_motor(mode, voltage):
+#     motor.set_state(mode, voltage)
 
-        # Keep wheel speed updated
-        wheel.update_pulse_count()
+# def loop():
+#     enc_old = rotary_enc.value()
+#     while True:
+#         # Need to call the below to keep the motor state updated
+#         motor.update_state()
+#         motor.update_current()
+#         motor.update_rpm()
 
-        # Button and rotary encoder updates
-        btn.read()
+#         # Keep wheel speed updated
+#         wheel.update_pulse_count()
 
-        enc_new = rotary_enc.value()
-        if enc_old != enc_new:
-            enc_old = enc_new
-            print('result =', enc_new)
+#         # Button and rotary encoder updates
+#         btn.read()
 
-        print(f'State: {motor.motor_direction} Voltage: {round(motor.target_voltage_mv/1000, 2)}V Current 100ms: {round(motor.get_current_100ms(),3)}A Temp: {round(motor.get_temp(),1)}C RPM 100ms: {motor.get_rpm_100ms()} RPM 1s: {motor.get_rpm_1s()} Wheel 100ms: {wheel.get_rpm_100ms()} Wheel 1s: {wheel.get_rpm_1s()}')
+#         enc_new = rotary_enc.value()
+#         if enc_old != enc_new:
+#             enc_old = enc_new
+#             print('result =', enc_new)
 
+#         print(f'State: {motor.motor_direction} Voltage: {round(motor.target_voltage_mv/1000, 2)}V Current 100ms: {round(motor.get_current_100ms(),3)}A Temp: {round(motor.get_temp(),1)}C RPM 100ms: {motor.get_rpm_100ms()} RPM 1s: {motor.get_rpm_1s()} Wheel 100ms: {wheel.get_rpm_100ms()} Wheel 1s: {wheel.get_rpm_1s()}')

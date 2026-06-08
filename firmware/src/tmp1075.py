@@ -3,9 +3,9 @@
 from machine import I2C
 from micropython import const
 
-class TMP1075:
 
-    '''
+class TMP1075:
+    """
     MicroPython Driver for the TI TMP1075 temperature sensor.
 
     Example:
@@ -15,8 +15,8 @@ class TMP1075:
         tmp1075.get_temperature()
 
     See datasheet: http://www.ti.com/lit/ds/symlink/tmp1075.pdf
-    
-    '''
+
+    """
 
     REG_TEMP = const(0x00)
     REG_CONFIG = const(0x01)
@@ -26,17 +26,19 @@ class TMP1075:
 
     def __init__(self, i2c=I2C, addr: int = None):
         self.i2c = i2c
-        self.addr = addr			  
+        self.addr = addr
         self._check_device()
 
     def _check_device(self):
-        ''' Check comms, DIE ID should always be 0x7500 '''
+        """Check comms, DIE ID should always be 0x7500"""
         id = self.i2c.readfrom_mem(self.addr, self.REG_DIEID, 2)
         if (id[0] << 8 + id[1]) != 0x7500:
-            raise ValueError(f'Incorrect DIE ID (got {hex((id[0] << 8) + id[1])}, expected 0x7500) or bad I2C comms')
+            raise ValueError(
+                f"Incorrect DIE ID (got {hex((id[0] << 8) + id[1])}, expected 0x7500) or bad I2C comms"
+            )
 
     def get_temperature(self):
-        ''' Get current temperature in degrees Celsius '''
+        """Get current temperature in degrees Celsius"""
         data = self.i2c.readfrom_mem(self.addr, self.REG_TEMP, 2)
         # 12-bit resolution, left-justified in 16 bits
         raw = (data[0] << 8) | data[1]
@@ -47,4 +49,3 @@ class TMP1075:
         # Convert to deg c
         temp = raw * 0.0625
         return temp
-

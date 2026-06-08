@@ -3,8 +3,9 @@
 import time
 from machine import Pin, ADC
 
+
 class BUTTON:
-    '''
+    """
     MicoPython driver for buttons.
     Supports debouncing and triggers a callback for single, double, and long presses.
 
@@ -27,7 +28,8 @@ class BUTTON:
     while True:
         btn.read()
 
-    '''
+    """
+
     LOW, HIGH = range(2)
     IDLE, PRESSING = range(2)
     SINGLE_PRESS, DOUBLE_PRESS, LONG_PRESS = range(3)
@@ -50,8 +52,7 @@ class BUTTON:
         self._callbacks = {}
 
         self._pin = None
-        self._pin = Pin(
-            self._id, Pin.IN, Pin.PULL_UP if pullup else None)
+        self._pin = Pin(self._id, Pin.IN, Pin.PULL_UP if pullup else None)
 
     def on_press(self, cb):
         self._callbacks["press"] = cb
@@ -85,17 +86,22 @@ class BUTTON:
 
     def loop(self):
         cur_time = time.ticks_ms()
-        if self._prev_state == self.IDLE and \
-            self._state == self.PRESSING:
+        if self._prev_state == self.IDLE and self._state == self.PRESSING:
             self._is_debouncing = True
             return
 
-        if self._press_count > 0 and \
-            not ("double_press" in self._callbacks and \
-                cur_time - self._first_pressed_at <= self._double_press_timeout) and \
-            not ("press_for" in self._callbacks and \
-                self._pressed_since != 0 and \
-                self._state == self.PRESSING):
+        if (
+            self._press_count > 0
+            and not (
+                "double_press" in self._callbacks
+                and cur_time - self._first_pressed_at <= self._double_press_timeout
+            )
+            and not (
+                "press_for" in self._callbacks
+                and self._pressed_since != 0
+                and self._state == self.PRESSING
+            )
+        ):
 
             press_cb = self._callbacks.get("press")
             if press_cb:
@@ -103,8 +109,7 @@ class BUTTON:
             self._press_count = 0
             self._first_pressed_at = 0
 
-        if self._prev_state == self.PRESSING and \
-            self._state == self.PRESSING:
+        if self._prev_state == self.PRESSING and self._state == self.PRESSING:
 
             if self._is_debouncing:
                 self._press_count += 1
@@ -115,8 +120,11 @@ class BUTTON:
                 self._is_debouncing = False
 
             press_for_cb = self._callbacks.get("press_for")
-            if press_for_cb and self._press_count > 0 and \
-                cur_time - self._pressed_since >= self._press_for_timeout:
+            if (
+                press_for_cb
+                and self._press_count > 0
+                and cur_time - self._pressed_since >= self._press_for_timeout
+            ):
 
                 press_for_cb(self, self.LONG_PRESS)
                 self._press_count = 0
@@ -125,15 +133,17 @@ class BUTTON:
                 return
 
             double_press_cb = self._callbacks.get("double_press")
-            if double_press_cb and self._press_count > 1 and \
-                cur_time - self._first_pressed_at <= self._double_press_timeout:
+            if (
+                double_press_cb
+                and self._press_count > 1
+                and cur_time - self._first_pressed_at <= self._double_press_timeout
+            ):
 
                 double_press_cb(self, self.DOUBLE_PRESS)
                 self._press_count = 0
                 self._first_pressed_at = 0
 
-        if self._prev_state == self.PRESSING and \
-            self._state == self.IDLE:
+        if self._prev_state == self.PRESSING and self._state == self.IDLE:
             self._pressed_since = 0
 
     def get_id(self):

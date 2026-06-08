@@ -3,9 +3,9 @@ import power_supply
 import time
 import collections
 
-class MotorControl:
 
-    '''
+class MotorControl:
+    """
     High level control logic all aspects of the motor control.
 
     Provides the abilty to set the motor direction and voltage.
@@ -32,14 +32,14 @@ class MotorControl:
         motor.get_rpm()
         motor.get_temp()
         motor.set_state(REVERSE, 3.0)
-    '''
+    """
 
     # States for the user to command
     MOTOR_BRAKE = 1
     MOTOR_FORWARD = 2
     MOTOR_REVERSE = 3
 
-    VOLTAGE_MIN_MV = 1000
+    VOLTAGE_MIN_MV = 500
     VOLTAGE_MAX_MV = 3000
 
     def __init__(self, psu, drv, rpm, temp, brake_time: float = 1, ramp_rate: int = 50):
@@ -47,7 +47,7 @@ class MotorControl:
         self.drv = drv
         self.rpm = rpm
         self.temp = temp
-        
+
         # Soft start
         self.brake_time_ms = int(brake_time * 1000)
         self.ramp_rate = ramp_rate
@@ -72,30 +72,36 @@ class MotorControl:
         self.psu.disable()
         self.psu.set_voltage(self.voltage_mv / 1000)
         self.drv.brake()
-        self.drv.enable() # We don't want to enable / disable the DRV during use, instead use brake to disable motion
-        self.psu.enable() # Likewise, we'll leave the PSU on at all times and just use brake to disable motion
+        self.drv.enable()  # We don't want to enable / disable the DRV during use, instead use brake to disable motion
+        self.psu.enable()  # Likewise, we'll leave the PSU on at all times and just use brake to disable motion
 
     def set_state(self, direction: int, voltage: float):
-        '''
+        """
         Sets motor direction and voltage following the rules in the docstring
-        '''
+        """
 
         # Bounds check voltage and set target
-        if voltage < 1.0:
+        if voltage * 1000 < self.VOLTAGE_MIN_MV:
             self.target_voltage_mv = self.VOLTAGE_MIN_MV
-            raise ValueError(f'Set Voltage {voltage}V is below minimum of 1.0V, setting to 1.0V')
-        elif voltage > 3.0:
+            raise ValueError(
+                f"Set Voltage {voltage}V is below minimum of {self.VOLTAGE_MIN_MV/1000}V, setting to {self.VOLTAGE_MIN_MV/1000}V"
+            )
+        elif voltage * 1000 > self.VOLTAGE_MAX_MV:
             self.target_voltage_mv = self.VOLTAGE_MAX_MV
-            raise ValueError(f'Set Voltage {voltage}V is above maximum of 3.0V, setting to 3.0V')
+            raise ValueError(
+                f"Set Voltage {voltage}V is above maximum of {self.VOLTAGE_MAX_MV/1000}V, setting to {self.VOLTAGE_MAX_MV/1000}V"
+            )
         else:
             self.target_voltage_mv = int(voltage * 1000)
-        
+
         # Sets target direction, this does not handle the logic of when we change, just the desired end state
         if direction not in [self.MOTOR_BRAKE, self.MOTOR_FORWARD, self.MOTOR_REVERSE]:
-            raise ValueError(f'Invalid motor direction {direction}, must be 1 (brake), 2 (forward), or 3 (reverse)')
+            raise ValueError(
+                f"Invalid motor direction {direction}, must be 1 (brake), 2 (forward), or 3 (reverse)"
+            )
         else:
             self.target_motor_direction = direction
-        
+
     def ramp_voltage(self, target_voltage_mv: float = None):
         if target_voltage_mv == None:
             target_voltage_mv = self.target_voltage_mv
@@ -140,21 +146,25 @@ class MotorControl:
             self.ramp_voltage()
 
     def get_voltage(self):
-        '''Get voltage from current sensor'''
+        """Get voltage from current sensor"""
         return self.psu.get_voltage()
-    
+
     def update_current(self):
-        '''
+        """
         This function will sample the current every 10ms and create rolling averages
-        '''
+        """
         now = time.ticks_ms()
         if time.ticks_diff(now, self.current_last_sample_time) >= 10:
-            current = self.psu.get_current(10) # This gets rid of the high frequency commutation noise
+            current = self.psu.get_current(
+                10
+            )  # This gets rid of the high frequency commutation noise
             self.current_last_sample_time = now
-            
+
             # The 100ms average is directly averaging 10 x 10ms samples
             self.current_samples_100ms.append(current)
-            avg_100ms = sum(self.current_samples_100ms) / len(self.current_samples_100ms)
+            avg_100ms = sum(self.current_samples_100ms) / len(
+                self.current_samples_100ms
+            )
 
             # The 1s and 10s averages are using the 100ms (and 1s) averages to keep the array size down
             self.current_samples_1s.append(self.current_samples_100ms[-1])
@@ -167,27 +177,27 @@ class MotorControl:
 
     def get_current_100ms(self):
         return self.current_last_avg[0]
-    
+
     def get_current_1s(self):
         return self.current_last_avg[1]
-    
+
     def get_current_10s(self):
         return self.current_last_avg[2]
-    
+
     def update_rpm(self):
         self.rpm.update_pulse_count()
-    
+
     def get_rpm_100ms(self):
         return self.rpm.get_rpm_100ms()
-    
+
     def get_rpm_1s(self):
         return self.rpm.get_rpm_1s()
-    
+
     def get_rpm_10s(self):
         return self.rpm.get_rpm_10s()
-    
+
     def get_temp(self):
-        ''''
+        """'
         Returns raw temperature, no need to average as dTdt is slow and not very noisy
-        '''
+        """
         return self.temp.get_temperature()

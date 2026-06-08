@@ -2,9 +2,9 @@
 
 from machine import I2C
 
-class MCP4725:
 
-    '''
+class MCP4725:
+    """
     MicroPython Driver for the Microchip MCP4725 DAC.
 
     Example:
@@ -15,8 +15,8 @@ class MCP4725:
         dac.set_voltage(1.65)  # By voltage
 
     See datasheet: https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf
-    
-    '''
+
+    """
 
     def __init__(self, i2c=I2C, addr: int = None, vcc: float = 3.3):
         self.i2c = i2c
@@ -55,7 +55,7 @@ class MCP4725:
         """
         value = self.get_value()
         return self._value_to_voltage(value)
-    
+
     def _value_to_voltage(self, value: int) -> float:
         """Internal: Convert raw DAC value to voltage"""
         return (value / 4095) * self.vcc

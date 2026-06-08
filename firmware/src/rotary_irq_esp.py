@@ -12,9 +12,9 @@ from machine import Pin
 from rotary import Rotary
 from sys import platform
 
-class RotaryIRQ(Rotary):
 
-    '''
+class RotaryIRQ(Rotary):
+    """
     MicroPython Driver for rotary encoders.
 
     Example:
@@ -24,18 +24,28 @@ class RotaryIRQ(Rotary):
         val_old = r.value()
         while True:
             val_new = r.value()
-            
+
             if val_old != val_new:
                 val_old = val_new
                 print('result =', val_new)
-                
-            time.sleep_ms(50)
-    
-    '''
 
-    def __init__(self, pin_num_clk: int = None, pin_num_dt: int = None, min_val: int = 0, max_val: int = 10, incr: int = 1,
-                 reverse: bool = False, range_mode: int = Rotary.RANGE_UNBOUNDED, 
-                 pull_up: bool = False, half_step: bool = False, invert: bool = False):
+            time.sleep_ms(50)
+
+    """
+
+    def __init__(
+        self,
+        pin_num_clk: int = None,
+        pin_num_dt: int = None,
+        min_val: int = 0,
+        max_val: int = 10,
+        incr: int = 1,
+        reverse: bool = False,
+        range_mode: int = Rotary.RANGE_UNBOUNDED,
+        pull_up: bool = False,
+        half_step: bool = False,
+        invert: bool = False,
+    ):
 
         super().__init__(min_val, max_val, incr, reverse, range_mode, half_step, invert)
 
@@ -50,14 +60,10 @@ class RotaryIRQ(Rotary):
         self._enable_dt_irq(self._process_rotary_pins)
 
     def _enable_clk_irq(self, callback=None):
-        self._pin_clk.irq(
-            trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING,
-            handler=callback)
+        self._pin_clk.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=callback)
 
     def _enable_dt_irq(self, callback=None):
-        self._pin_dt.irq(
-            trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING,
-            handler=callback)
+        self._pin_dt.irq(trigger=Pin.IRQ_RISING | Pin.IRQ_FALLING, handler=callback)
 
     def _disable_clk_irq(self):
         self._pin_clk.irq(handler=None)

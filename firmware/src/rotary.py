@@ -23,28 +23,29 @@ _R_CCW_3 = const(0x6)
 _R_ILLEGAL = const(0x7)
 
 _transition_table = [
-
     # |------------- NEXT STATE -------------|            |CURRENT STATE|
     # CLK/DT    CLK/DT     CLK/DT    CLK/DT
     #   00        01         10        11
-    [_R_START, _R_CCW_1, _R_CW_1,  _R_START],             # _R_START
-    [_R_CW_2,  _R_START, _R_CW_1,  _R_START],             # _R_CW_1
-    [_R_CW_2,  _R_CW_3,  _R_CW_1,  _R_START],             # _R_CW_2
-    [_R_CW_2,  _R_CW_3,  _R_START, _R_START | _DIR_CW],   # _R_CW_3
-    [_R_CCW_2, _R_CCW_1, _R_START, _R_START],             # _R_CCW_1
-    [_R_CCW_2, _R_CCW_1, _R_CCW_3, _R_START],             # _R_CCW_2
+    [_R_START, _R_CCW_1, _R_CW_1, _R_START],  # _R_START
+    [_R_CW_2, _R_START, _R_CW_1, _R_START],  # _R_CW_1
+    [_R_CW_2, _R_CW_3, _R_CW_1, _R_START],  # _R_CW_2
+    [_R_CW_2, _R_CW_3, _R_START, _R_START | _DIR_CW],  # _R_CW_3
+    [_R_CCW_2, _R_CCW_1, _R_START, _R_START],  # _R_CCW_1
+    [_R_CCW_2, _R_CCW_1, _R_CCW_3, _R_START],  # _R_CCW_2
     [_R_CCW_2, _R_START, _R_CCW_3, _R_START | _DIR_CCW],  # _R_CCW_3
-    [_R_START, _R_START, _R_START, _R_START]]             # _R_ILLEGAL
+    [_R_START, _R_START, _R_START, _R_START],
+]  # _R_ILLEGAL
 
 _transition_table_half_step = [
-    [_R_CW_3,            _R_CW_2,  _R_CW_1,  _R_START],
-    [_R_CW_3 | _DIR_CCW, _R_START, _R_CW_1,  _R_START],
-    [_R_CW_3 | _DIR_CW,  _R_CW_2,  _R_START, _R_START],
-    [_R_CW_3,            _R_CCW_2, _R_CCW_1, _R_START],
-    [_R_CW_3,            _R_CW_2,  _R_CCW_1, _R_START | _DIR_CW],
-    [_R_CW_3,            _R_CCW_2, _R_CW_3,  _R_START | _DIR_CCW],
-    [_R_START,           _R_START, _R_START, _R_START],
-    [_R_START,           _R_START, _R_START, _R_START]]
+    [_R_CW_3, _R_CW_2, _R_CW_1, _R_START],
+    [_R_CW_3 | _DIR_CCW, _R_START, _R_CW_1, _R_START],
+    [_R_CW_3 | _DIR_CW, _R_CW_2, _R_START, _R_START],
+    [_R_CW_3, _R_CCW_2, _R_CCW_1, _R_START],
+    [_R_CW_3, _R_CW_2, _R_CCW_1, _R_START | _DIR_CW],
+    [_R_CW_3, _R_CCW_2, _R_CW_3, _R_START | _DIR_CCW],
+    [_R_START, _R_START, _R_START, _R_START],
+    [_R_START, _R_START, _R_START, _R_START],
+]
 
 _STATE_MASK = const(0x07)
 _DIR_MASK = const(0x30)
@@ -87,8 +88,15 @@ class Rotary(object):
         self._invert = invert
         self._listener = []
 
-    def set(self, value=None, min_val=None, incr=None,
-            max_val=None, reverse=None, range_mode=None):
+    def set(
+        self,
+        value=None,
+        min_val=None,
+        incr=None,
+        max_val=None,
+        reverse=None,
+        range_mode=None,
+    ):
         # disable DT and CLK pin interrupts
         self._hal_disable_irq()
 
@@ -123,24 +131,23 @@ class Rotary(object):
 
     def remove_listener(self, l):
         if l not in self._listener:
-            raise ValueError('{} is not an installed listener'.format(l))
+            raise ValueError("{} is not an installed listener".format(l))
         self._listener.remove(l)
-        
+
     def _process_rotary_pins(self, pin):
         old_value = self._value
-        clk_dt_pins = (self._hal_get_clk_value() <<
-                       1) | self._hal_get_dt_value()
-                       
+        clk_dt_pins = (self._hal_get_clk_value() << 1) | self._hal_get_dt_value()
+
         if self._invert:
             clk_dt_pins = ~clk_dt_pins & 0x03
-            
+
         # Determine next state
         if self._half_step:
-            self._state = _transition_table_half_step[self._state &
-                                                      _STATE_MASK][clk_dt_pins]
+            self._state = _transition_table_half_step[self._state & _STATE_MASK][
+                clk_dt_pins
+            ]
         else:
-            self._state = _transition_table[self._state &
-                                            _STATE_MASK][clk_dt_pins]
+            self._state = _transition_table[self._state & _STATE_MASK][clk_dt_pins]
         direction = self._state & _DIR_MASK
 
         incr = 0
@@ -152,17 +159,9 @@ class Rotary(object):
         incr *= self._reverse
 
         if self._range_mode == self.RANGE_WRAP:
-            self._value = _wrap(
-                self._value,
-                incr,
-                self._min_val,
-                self._max_val)
+            self._value = _wrap(self._value, incr, self._min_val, self._max_val)
         elif self._range_mode == self.RANGE_BOUNDED:
-            self._value = _bound(
-                self._value,
-                incr,
-                self._min_val,
-                self._max_val)
+            self._value = _bound(self._value, incr, self._min_val, self._max_val)
         else:
             self._value = self._value + incr
 
