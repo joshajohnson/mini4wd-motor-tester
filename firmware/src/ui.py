@@ -126,37 +126,6 @@ class UI:
 
         return fill
 
-    def _update_back_bar(self, fill, enc_btn, press_ms):
-        """
-        Call every loop tick to handle the back-bar fill and long-press
-        detection.  Returns the updated press_start timestamp:
-          - 0        -> not pressed / timed out
-          - -1       -> long-press threshold reached (caller should return)
-          - >0       -> still holding, bar updated
-        Pass press_ms=0 when not pressed.
-        """
-
-        enc_btn.read()
-        if (
-            enc_btn.get_prev_state() == enc_btn.IDLE
-            and enc_btn.get_state() == enc_btn.PRESSING
-        ):
-            return time.ticks_ms()
-        elif enc_btn.get_state() == enc_btn.PRESSING and press_ms > 0:
-            elapsed = time.ticks_diff(time.ticks_ms(), press_ms)
-            fill.set_width(max(1, int(DISP_WIDTH * min(elapsed, HOLD_MS) / HOLD_MS)))
-            if elapsed >= HOLD_MS:
-                fill.set_width(1)
-                return -1
-            return press_ms
-        elif (
-            enc_btn.get_prev_state() == enc_btn.PRESSING
-            and enc_btn.get_state() == enc_btn.IDLE
-        ):
-            fill.set_width(1)
-            return 0
-        return press_ms
-
     # ──────────────────────────── Main menu ──────────────────────────────
 
     def show_menu(self, psu, motor, tmp, rotary, enc_btn, wheel_sensor):
