@@ -27,11 +27,11 @@ class MotorControl:
         motor = MotorControl(psu, drv, rpm, temp)
 
         motor.set_state(FORWARD, 1.0)
-        motor.get_voltage()
-        motor.get_current()
-        motor.get_rpm()
-        motor.get_temp()
-        motor.set_state(REVERSE, 3.0)
+        motor.get_voltage_mv()
+        motor.get_current_1s()
+        motor.get_rpm_1s()
+        motor.get_temp_10s()
+        motor.set_state(REVERSE, 3000)
     """
 
     # States for the user to command
@@ -64,39 +64,42 @@ class MotorControl:
         # Current Averaging
         self.current_samples_100ms = collections.deque((), 10)
         self.current_samples_1s = collections.deque((), 10)
-        self.current_samples_10s = collections.deque((), 10)
         self.current_last_sample_time = time.ticks_ms()
-        self.current_last_avg = (0.0, 0.0, 0.0)
+        self.current_last_avg = (0.0, 0.0)
+        # Temp Averaging
+        self.temp_samples_10s = collections.deque((), 10)
+        self.temp_last_sample_time = time.ticks_ms()
+        self.temp_last_avg = 0.0
 
         # Set default states
         self.psu.disable()
-        self.psu.set_voltage(self.voltage_mv / 1000)
+        self.psu.set_voltage_mv(self.voltage_mv)
         self.drv.brake()
         self.drv.enable()  # We don't want to enable / disable the DRV during use, instead use brake to disable motion
         self.psu.enable()  # Likewise, we'll leave the PSU on at all times and just use brake to disable motion
 
-    def set_state(self, direction: int, voltage: float):
+    def set_state(self, direction: int, voltage: int):
         """
         Sets motor direction and voltage following the rules in the docstring
         """
 
         # Bounds check voltage and set target
-        if voltage * 1000 < self.VOLTAGE_MIN_MV:
+        if voltage < self.VOLTAGE_MIN_MV:
             self.target_voltage_mv = self.VOLTAGE_MIN_MV
-            raise ValueError(
-                f"Set Voltage {voltage}V is below minimum of {self.VOLTAGE_MIN_MV/1000}V, setting to {self.VOLTAGE_MIN_MV/1000}V"
+            print(
+                f"Set Voltage {voltage}mV is below minimum of {self.VOLTAGE_MIN_MV}mV, setting to {self.VOLTAGE_MIN_MV}mV"
             )
-        elif voltage * 1000 > self.VOLTAGE_MAX_MV:
+        elif voltage > self.VOLTAGE_MAX_MV:
             self.target_voltage_mv = self.VOLTAGE_MAX_MV
-            raise ValueError(
-                f"Set Voltage {voltage}V is above maximum of {self.VOLTAGE_MAX_MV/1000}V, setting to {self.VOLTAGE_MAX_MV/1000}V"
+            print(
+                f"Set Voltage {voltage}mV is above maximum of {self.VOLTAGE_MAX_MV}mV, setting to {self.VOLTAGE_MAX_MV}mV"
             )
         else:
-            self.target_voltage_mv = int(voltage * 1000)
+            self.target_voltage_mv = int(voltage)
 
         # Sets target direction, this does not handle the logic of when we change, just the desired end state
         if direction not in [self.MOTOR_BRAKE, self.MOTOR_FORWARD, self.MOTOR_REVERSE]:
-            raise ValueError(
+            print(
                 f"Invalid motor direction {direction}, must be 1 (brake), 2 (forward), or 3 (reverse)"
             )
         else:
@@ -116,7 +119,7 @@ class MotorControl:
                     self.voltage_mv = self.voltage_mv + 50
                 elif target_voltage_mv < self.voltage_mv:
                     self.voltage_mv = self.voltage_mv - 50
-                self.psu.set_voltage(self.voltage_mv / 1000)
+                self.psu.set_voltage_mv(self.voltage_mv)
                 self._last_ramp_time = now
 
     def update_state(self):
@@ -145,18 +148,18 @@ class MotorControl:
         elif self.voltage_mv != self.target_voltage_mv:
             self.ramp_voltage()
 
-    def get_voltage(self):
+    def get_voltage_mv(self):
         """Get voltage from current sensor"""
-        return self.psu.get_voltage()
+        return self.psu.get_voltage_mv()
 
-    def update_current(self):
+    def update_current_ma(self):
         """
         This function will sample the current every 10ms and create rolling averages
         """
         now = time.ticks_ms()
         if time.ticks_diff(now, self.current_last_sample_time) >= 10:
-            current = self.psu.get_current(
-                10
+            current = self.psu.get_current_ma(
+                5
             )  # This gets rid of the high frequency commutation noise
             self.current_last_sample_time = now
 
@@ -166,23 +169,16 @@ class MotorControl:
                 self.current_samples_100ms
             )
 
-            # The 1s and 10s averages are using the 100ms (and 1s) averages to keep the array size down
+            # The 1s average is using the 100ms averages to keep the array size down
             self.current_samples_1s.append(self.current_samples_100ms[-1])
             avg_1s = sum(self.current_samples_1s) / len(self.current_samples_1s)
-
-            self.current_samples_10s.append(self.current_samples_1s[-1])
-            avg_10s = sum(self.current_samples_10s) / len(self.current_samples_10s)
-
-            self.current_last_avg = (avg_100ms, avg_1s, avg_10s)
+            self.current_last_avg = (avg_100ms, avg_1s)
 
     def get_current_100ms(self):
         return self.current_last_avg[0]
 
     def get_current_1s(self):
         return self.current_last_avg[1]
-
-    def get_current_10s(self):
-        return self.current_last_avg[2]
 
     def update_rpm(self):
         self.rpm.update_pulse_count()
@@ -193,11 +189,14 @@ class MotorControl:
     def get_rpm_1s(self):
         return self.rpm.get_rpm_1s()
 
-    def get_rpm_10s(self):
-        return self.rpm.get_rpm_10s()
+    def update_temp(self):
+        now = time.ticks_ms()
+        if time.ticks_diff(now, self.temp_last_sample_time) >= 1000:
+            self.temp_last_sample_time = now
 
-    def get_temp(self):
-        """'
-        Returns raw temperature, no need to average as dTdt is slow and not very noisy
-        """
-        return self.temp.get_temperature()
+        # The 10s average is directly averaging 10 x 1s samples
+        self.temp_samples_10s.append(self.temp.get_temperature())
+        self.temp_last_avg = sum(self.temp_samples_10s) / len(self.temp_samples_10s)
+
+    def get_temp_10s(self):
+        return self.temp_last_avg

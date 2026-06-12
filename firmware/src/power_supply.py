@@ -14,9 +14,9 @@ class PSU:
         psu = PSU(i2c, en_pin=16, dac_addr=0x60, imon_addr=0x40)
         psu.enable()
         psu.disable()
-        psu.set_voltage(1.65)  # Set regulator output voltage to 1.65V
-        psu.get_voltage()  # Use current sensor to measure output voltage
-        psu.get_current()  # Use current sensor to measure output current
+        psu.set_voltage_mv(1650)  # Set regulator output voltage to 1650mV
+        psu.get_voltage_mv()  # Use current sensor to measure output voltage
+        psu.get_current_ma()  # Use current sensor to measure output current
 
     """
 
@@ -41,7 +41,7 @@ class PSU:
         """Disable buck reg with enable pin"""
         self.reg_enable_pin.value(0)
 
-    def set_voltage(self, voltage: float):
+    def set_voltage_mv(self, voltage_mv: int):
         """Given desired output voltage, calculate DAC voltage and set accordingly"""
 
         # Output voltage configured per ADI / Maxim appnote
@@ -51,20 +51,20 @@ class PSU:
         # VREF_FB = 0.8V, DAC Swing = 0-3.3V
         # Constants were determined emperically on one unit, don't ask me about per unit calibration
 
-        dac_voltage = (4.06 - voltage) / 1.01
-        self.dac.set_voltage(dac_voltage)
+        dac_voltage_mv = (4060 - voltage_mv) / 1.01
+        self.dac.set_voltage_mv(dac_voltage_mv)
 
-    def get_voltage(self):
+    def get_voltage_mv(self):
         """Measure output voltage using current sensor"""
         return self.imon.get_bus_voltage()
 
-    def get_current(self, n_samples: int = 1):
+    def get_current_ma(self, n_samples: int = 1):
         """
         Measure output current using current sensor
         n_samples: number of samples to average, default 1 (no averaging)
         """
         cumsum = 0
         for _ in range(n_samples):
-            cumsum += self.imon.get_current()
+            cumsum += self.imon.get_current_ma()
 
         return cumsum / n_samples

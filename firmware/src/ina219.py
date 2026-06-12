@@ -16,8 +16,8 @@ class INA219:
 
         i2c = machine.I2C(sda=machine.Pin(8), scl=machine.Pin(9))
         imon = INA219(i2c, addr=0x40)
-        imon.get_voltage()
-        imon.get_current()
+        imon.get_voltage_mv()
+        imon.get_current_ma()
 
     See datasheet: https://ww1.microchip.com/downloads/en/DeviceDoc/22039d.pdf
 
@@ -108,29 +108,29 @@ class INA219:
             num -= 0x10000
         return num
 
-    def get_shunt_voltage(self):
-        """The shunt voltage (between V+ and V-) in Volts (so +-.327V)"""
+    def get_shunt_voltage_mv(self):
+        """The shunt voltage (between V+ and V-) in mV"""
         value = self._to_signed(self._read_register(self.REG_SHUNT))
-        # The least signficant bit is 10uV which is 0.00001 volts
-        return value * 0.00001
+        # The least signficant bit is 10uV which is 0.01 mV
+        return value * 0.01
 
-    def get_bus_voltage(self):
-        """The bus voltage (between V- and GND) in Volts"""
+    def get_bus_voltage_mv(self):
+        """The bus voltage (between V- and GND) in mV"""
         raw_voltage = self._read_register(self.REG_BUS)
 
         # Shift to the right 3 to drop CNVR and OVF and multiply by LSB
         # Each least signficant bit is 4mV
         voltage_mv = self._to_signed(raw_voltage >> 3) * 4
-        return voltage_mv * 0.001
+        return voltage_mv
 
-    def get_current(self):
+    def get_current_ma(self):
         """The current through the shunt resistor in milliamps."""
         # Write cal register as it is volatile and will break current and power readings if missing
         self._write_register(self.REG_CAL, self._cal_value)
 
         # Now we can safely read the CURRENT register!
         raw_current = self._to_signed(self._read_register(self.REG_CURRENT))
-        return raw_current * self._current_lsb
+        return raw_current * self._current_lsb * 1000
 
     def set_calibration(self, cal_value, config):
         """Set calibration value and config register values"""

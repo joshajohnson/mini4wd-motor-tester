@@ -1,4 +1,4 @@
-from machine import Pin, I2C
+from machine import Pin, I2C, Timer
 import time
 from power_supply import PSU
 from drv8837 import DRV8837
@@ -8,6 +8,7 @@ from pulse_counter import PulseCounter
 from rotary_irq_esp import RotaryIRQ
 from st7735_display import ST7735_display
 from button import BUTTON
+import lvgl as lv
 from ui import UI
 
 time.sleep(3)  # Allow time to connect to REPL after a reset for debugging
@@ -35,6 +36,16 @@ rpm = PulseCounter(pin=2)
 tmp = TMP1075(i2c, addr=0x48)
 motor = MotorControl(psu, drv, rpm, tmp)
 
+
+# Configure an ISR for LVGL to update the display
+def lvgl_callback(timer):
+    lv.tick_inc(50)
+    lv.task_handler()
+    pass
+
+
+lvgl_timer = Timer(0)  # Timer ID 0 (ESP32 has timers 0–3)
+lvgl_timer.init(period=50, mode=Timer.PERIODIC, callback=lvgl_callback)
 
 # Launch UI
 app = UI(display)
