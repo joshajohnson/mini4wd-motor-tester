@@ -80,6 +80,7 @@ class SpeedScreen(UIBase):
         while True:
             press_ms = self._update_back_bar(back_fill, enc_btn, press_ms)
             if press_ms == -1:
+                self._wait_btn_release(enc_btn)
                 return
 
             wheel_sensor.update_pulse_count()

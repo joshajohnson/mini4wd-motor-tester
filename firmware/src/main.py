@@ -11,7 +11,7 @@ from button import BUTTON
 import lvgl as lv
 from ui import UI
 
-time.sleep(3)  # Allow time to connect to REPL after a reset for debugging
+# time.sleep(3)  # Allow time to connect to REPL after a reset for debugging
 
 # Init all the things
 i2c = I2C(sda=Pin(8), scl=Pin(9))

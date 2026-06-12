@@ -215,6 +215,7 @@ class ManualScreen(UIBase):
 
                 if press_ms == -1:
                     self._on_long_press(motor, rotary, enc_btn, items, sel, editing)
+                    self._wait_btn_release(enc_btn)
                     return
 
                 elif press_ms == -2:

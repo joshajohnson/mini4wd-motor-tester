@@ -109,12 +109,12 @@ class UIBase:
         return v
 
     def _wait_btn_release(self, enc_btn):
-        """Block until button is released to prevent double-triggering."""
+        """Block until button is released to prevent double triggering"""
         while True:
             enc_btn.read()
             if enc_btn.get_state() == enc_btn.IDLE:
                 break
-            time.sleep_ms(10)
+            time.sleep_ms(1)
 
     def _update_back_bar(self, fill, enc_btn, pressed_ms):
         """
