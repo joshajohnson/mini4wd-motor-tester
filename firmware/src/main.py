@@ -31,11 +31,11 @@ wheel_sensor = PulseCounter(pin=1)
 # Motor and related bits
 psu = PSU(i2c, en_pin=16, dac_addr=0x60, imon_addr=0x40)
 drv = DRV8837(motor_en=15, motor_in1=6, motor_in2=5)
-tmp = TMP1075(i2c, addr=0x48)
 rpm = PulseCounter(pin=2)
-
+tmp = TMP1075(i2c, addr=0x48)
 motor = MotorControl(psu, drv, rpm, tmp)
+
 
 # Launch UI
 app = UI(display)
-app.show_menu(psu, motor, tmp, rotary_enc, enc_btn, wheel_sensor)
+app.show_menu(motor, rotary_enc, enc_btn, wheel_sensor)

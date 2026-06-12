@@ -27,7 +27,7 @@ TEMP_DEFAULT_C = 40
 # DEFAULT BREAK IN ARRAY
 # TODO: add these to eeprom so they are persistent
 # [dir_fwd, vol_x10, dur_30, cool_30]
-BREAK_IN_STEPS = [
+BREAK_IN_STEbtn_press = [
     [True, 15, 2, 2],
     [False, 15, 2, 2],
     [True, 15, 2, 2],
@@ -70,7 +70,7 @@ class UI:
         import st7735_display, ui
         display = st7735_display.ST7735()
         app = ui.UI(display)
-        app.show_menu(psu, tmp, motor, rotary, enc_btn)
+        app.show_menu(motor, rotary, enc_btn)
     """
 
     def __init__(self, display):
@@ -110,6 +110,31 @@ class UI:
             lv.task_handler()
             time.sleep_ms(10)
 
+    def _update_back_bar(self, fill, enc_btn, pressed_ms):
+        """
+        Call every loop tick to handle the back-bar fill and long-press
+        detection.  Returns the updated press_start timestamp:
+          - 0        → not pressed / timed out
+          - -1       → long-press threshold reached (caller should return)
+          - >0       → still holding, bar updated
+        Pass pressed_ms=0 when not pressed.
+        """
+
+        enc_btn.read()
+        if enc_btn._prev_state == enc_btn.IDLE and enc_btn._state == enc_btn.PRESSING:
+            return time.ticks_ms()
+        elif enc_btn._state == enc_btn.PRESSING and pressed_ms > 0:
+            elapsed = time.ticks_diff(time.ticks_ms(), pressed_ms)
+            fill.set_width(max(1, int(160 * min(elapsed, HOLD_MS) / HOLD_MS)))
+            if elapsed >= HOLD_MS:
+                fill.set_width(1)
+                return -1
+            return pressed_ms
+        elif enc_btn._prev_state == enc_btn.PRESSING and enc_btn._state == enc_btn.IDLE:
+            fill.set_width(1)
+            return 0
+        return pressed_ms
+
     def _make_back_bar(self, scrn):
         """
         Add the long-press progress bar to a screen.
@@ -126,9 +151,44 @@ class UI:
 
         return fill
 
-    # ──────────────────────────── Main menu ──────────────────────────────
+    def _show_placeholder(self, title, enc_btn):
+        self._clear_screen()
+        scrn = lv.screen_active()
+        scrn.set_style_bg_color(COL_BCKGND, 0)
 
-    def show_menu(self, psu, motor, tmp, rotary, enc_btn, wheel_sensor):
+        lbl = lv.label(scrn)
+        lbl.set_text(title)
+        lbl.set_style_text_color(COL_TEXT, 0)
+        lbl.set_style_text_font(lv.font_montserrat_16, 0)
+        lbl.align(lv.ALIGN.TOP_MID, 0, 10)
+
+        lbl = lv.label(scrn)
+        lbl.set_text("Coming Soon...")
+        lbl.set_style_text_color(COL_TEXT, 0)
+        lbl.set_style_text_font(lv.font_montserrat_12, 0)
+        lbl.align(lv.ALIGN.CENTER, 0, 0)
+
+        hint = lv.label(scrn)
+        hint.set_text("Hold button to go back")
+        hint.set_style_text_color(COL_TEXT, 0)
+        lbl.set_style_text_font(lv.font_montserrat_12, 0)
+        hint.align(lv.ALIGN.BOTTOM_MID, 0, -10)
+
+        back_fill = self._make_back_bar(scrn)
+
+        pressed_ms = 0
+        while True:
+            pressed_ms = self._update_back_bar(back_fill, enc_btn, pressed_ms)
+            if pressed_ms == -1:
+                self._wait_btn_release(enc_btn)
+                return
+
+            lv.tick_inc(1)
+            lv.task_handler()
+
+    # ─────────────────────────── App Screens ────────────────────────────
+
+    def show_menu(self, motor, rotary, enc_btn, wheel_sensor):
         """
         Main menu — 2×2 grid
         [Manual] [Break-in]
@@ -232,22 +292,20 @@ class UI:
 
             # Call the menu items when selected
             if selected == 0:
-                self._show_manual_motor(psu, tmp, motor, rotary, enc_btn)
+                self._show_manual_motor(motor, rotary, enc_btn)
             elif selected == 1:
-                self._show_breakin(psu, tmp, motor, rotary, enc_btn)
+                self._show_breakin(motor, rotary, enc_btn)
             elif selected == 2:
                 self._show_speed_test(rotary, enc_btn, wheel_sensor)
             elif selected == 3:
                 self._show_settings(rotary, enc_btn)
 
-    # ──────────────────────── Manual motor test ──────────────────────────
-
-    def _show_manual_motor(self, psu, tmp, motor, rotary, enc_btn):
+    def _show_manual_motor(self, motor, rotary, enc_btn):
         """
         Manual motor test screen
 
         Row 0: [RPM]          : read-only live value
-        Row 1: [AMPS]         : read-only live value
+        Row 1: [AMbtn_press]         : read-only live value
         Row 2: [TIMER]        : read-only live value
         Row 3: [DIR] | [VOLT] : nav0 | nav 1
         Row 5: [START/STOP]   : nav 2
@@ -301,12 +359,12 @@ class UI:
         k_rpm = tile_key(t_rpm, "RPM")
         v_rpm = tile_val(t_rpm, "---")
 
-        # Row 1: AMPS
-        t_amps = make_tile(
+        # Row 1: AMbtn_press
+        t_ambtn_press = make_tile(
             MARGIN, 2 * MARGIN + 1 * (MARGIN + TILE_H), DISP_WIDTH - 2 * MARGIN, TILE_H
         )
-        k_amps = tile_key(t_amps, "CURRENT")
-        v_amps = tile_val(t_amps, "---")
+        k_ambtn_press = tile_key(t_ambtn_press, "CURRENT")
+        v_ambtn_press = tile_val(t_ambtn_press, "---")
 
         # Row 2: TIMER
         t_timer = make_tile(
@@ -428,12 +486,12 @@ class UI:
                 ):
                     press_ms = time.ticks_ms()
                 elif enc_btn.get_state() == enc_btn.PRESSING and press_ms > 0:
-                    elapsed = time.ticks_diff(time.ticks_ms(), press_ms)
+                    elabtn_pressed = time.ticks_diff(time.ticks_ms(), press_ms)
                     back_fill.set_width(
-                        max(1, int(DISP_WIDTH * min(elapsed, HOLD_MS) / HOLD_MS))
+                        max(1, int(DISP_WIDTH * min(elabtn_pressed, HOLD_MS) / HOLD_MS))
                     )
                     # User has exited the manual screen, return to main menu
-                    if elapsed >= HOLD_MS:
+                    if elabtn_pressed >= HOLD_MS:
                         back_fill.set_width(DISP_WIDTH)
                         if editing:
                             rotary.set(
@@ -454,10 +512,10 @@ class UI:
                     and press_ms > 0
                 ):
                     # User let go before HOLD_MS, so they wanted to select a field
-                    elapsed = time.ticks_diff(time.ticks_ms(), press_ms)
+                    elabtn_pressed = time.ticks_diff(time.ticks_ms(), press_ms)
                     press_ms = 0
                     back_fill.set_width(0)
-                    if elapsed < HOLD_MS:
+                    if elabtn_pressed < HOLD_MS:
                         if editing:
                             editing = False
                             rotary.set(
@@ -472,7 +530,7 @@ class UI:
                             if sel == 0:
                                 self.manual_dir_fwd = not self.manual_dir_fwd
                                 redraw_tiles(sel)
-                            # Adjust voltage in 100mV steps
+                            # Adjust voltage in 100mV stebtn_press
                             elif sel == 1:
                                 editing = True
                                 rotary.set(
@@ -543,14 +601,27 @@ class UI:
                     current_ma = 0
 
                 # Update live readouts in tiles
-                v_amps.set_text(f"{current_ma:.0f}mA")
+                v_ambtn_press.set_text(f"{current_ma:.0f}mA")
                 v_rpm.set_text(f"{motor.get_rpm_1s():d}")
 
-                # Elapsed time, this only resets on the start / stop, not on direction / voltage changes
+                # Elabtn_pressed time, this only resets on the start / stop, not on direction / voltage changes
                 if self.manual_run_start is not None and self.motor_run_state is True:
-                    elapsed_ms = time.ticks_diff(time.ticks_ms(), self.manual_run_start)
-                    elapsed_s = elapsed_ms // 1000
-                    v_timer.set_text(f"{elapsed_s // 60:02d}:{elapsed_s % 60:02d}")
+                    elabtn_pressed_ms = time.ticks_diff(
+                        time.ticks_ms(), self.manual_run_start
+                    )
+                    elabtn_pressed_s = elabtn_pressed_ms // 1000
+                    v_timer.set_text(
+                        f"{elabtn_pressed_s // 60:02d}:{elabtn_pressed_s % 60:02d}"
+                    )
 
                 lv.tick_inc(2)
                 lv.task_handler()
+
+    def _show_breakin(self, motor, rotary, enc_btn):
+        self._show_placeholder("Break In", enc_btn)
+
+    def _show_speed_test(self, rotary, enc_btn, wheel_sensor):
+        self._show_placeholder("Speed Test", enc_btn)
+
+    def _show_settings(self, rotary, enc_btn):
+        self._show_placeholder("Settings", enc_btn)
