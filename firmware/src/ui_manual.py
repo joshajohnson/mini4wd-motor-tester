@@ -136,7 +136,7 @@ class ManualScreen(UIBase):
             scrn, MARGIN, self._row_y(1), DISP_WIDTH - 2 * MARGIN, TILE_H
         )
         self._tile_key(t_timer, "TIMER")
-        v_timer = self._tile_val(t_timer, "--:--")
+        v_timer = self._tile_val(t_timer, "00:00")
 
         # Row 2: AMPS | TEMP
         t_amps = self._make_tile(

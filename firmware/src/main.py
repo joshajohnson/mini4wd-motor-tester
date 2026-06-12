@@ -19,8 +19,6 @@ i2c = I2C(sda=Pin(8), scl=Pin(9))
 display = ST7735_display()
 
 led = Pin(0, Pin.OUT, Pin.PULL_DOWN)
-# .on_double_press(press_handler) \
-# .on_press_for(press_handler, 1000)
 
 # Rotary encoder including button
 rotary_enc = RotaryIRQ(pin_num_clk=45, pin_num_dt=48)

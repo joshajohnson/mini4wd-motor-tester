@@ -36,6 +36,7 @@ class UI(UIBase):
         super().__init__(display)
         self._manual = ManualScreen(display)
         self._speed = SpeedScreen(display)
+        self._cursor_index = 0
 
     def show_menu(self, motor, rotary, enc_btn, wheel_sensor):
         """
@@ -93,19 +94,18 @@ class UI(UIBase):
             rotary.set(
                 min_val=0,
                 max_val=len(MENU_ITEMS) - 1,
-                value=0,
+                value=self._cursor_index,
                 range_mode=rotary.RANGE_BOUNDED,
             )
-            selected = 0
             prev_selected = -1
 
             while True:
                 new_val = rotary.value()
                 if new_val != prev_selected:
-                    selected = new_val
-                    prev_selected = selected
+                    self._cursor_index = new_val
+                    prev_selected = self._cursor_index
                     for i, (_, _, sel_col) in enumerate(MENU_ITEMS):
-                        if i == selected:
+                        if i == self._cursor_index:
                             tiles[i].set_style_bg_color(sel_col, 0)
                             tiles[i].set_style_border_width(0, 0)
                             tile_syms[i].set_style_text_color(COL_SEL_TEXT, 0)
@@ -123,13 +123,13 @@ class UI(UIBase):
 
                 motor.update_state()
 
-            if selected == 0:
+            if self._cursor_index == 0:
                 self._manual.show(motor, rotary, enc_btn)
-            elif selected == 1:
+            elif self._cursor_index == 1:
                 self._show_breakin(motor, rotary, enc_btn)
-            elif selected == 2:
+            elif self._cursor_index == 2:
                 self._speed.show(wheel_sensor, enc_btn)
-            elif selected == 3:
+            elif self._cursor_index == 3:
                 self._show_settings(rotary, enc_btn)
 
     def _show_breakin(self, motor, rotary, enc_btn):
