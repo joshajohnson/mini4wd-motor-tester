@@ -24,15 +24,22 @@ VOLTAGE_DEFAULT_MV = 1000
 CURRENT_DEFAULT_10 = 10  # 1A default trip
 TEMP_DEFAULT_C = 40
 
+
+# DIY enum because micropython doesn't support it
+class Direction:
+    FWD = 1
+    REV = 2
+
+
 # DEFAULT BREAK IN ARRAY
 # TODO: add these to eeprom so they are persistent
-# [dir_fwd, vol_x10, dur_30, cool_30]
-BREAK_IN_STEbtn_press = [
-    [True, 15, 2, 2],
-    [False, 15, 2, 2],
-    [True, 15, 2, 2],
-    [False, 15, 2, 2],
-    [True, 15, 2, 2],
+# [dir, vol_x10, dur_30, cool_30]
+BREAK_IN_STEPS = [
+    [Direction.FWD, 15, 2, 2],
+    [Direction.REV, 15, 2, 2],
+    [Direction.FWD, 15, 2, 2],
+    [Direction.REV, 15, 2, 2],
+    [Direction.FWD, 15, 2, 2],
 ]
 
 # DISPLAY DIMENSIONS
@@ -81,11 +88,11 @@ class UI:
         # Manual mode
         # Defaults
         self.motor_run_state = False
-        self.manual_dir_fwd = True
+        self.manual_dir = Direction.FWD
         self.manual_vol_x10 = VOLTAGE_DEFAULT_MV / 100
         # State Control
         self.old_motor_run_state = self.motor_run_state
-        self.old_manual_dir_fwd = self.manual_dir_fwd
+        self.old_manual_dir = self.manual_dir
         self.old_manual_vol_x10 = self.manual_vol_x10
         self.manual_run_start = None
 
@@ -98,6 +105,33 @@ class UI:
             scrn.get_child(0).delete()
         lv.tick_inc(10)
         lv.task_handler()
+
+    def _make_tile(self, scrn, x, y, w, h):
+        t = lv.obj(scrn)
+        t.set_size(w, h)
+        t.set_pos(x, y)
+        t.set_style_bg_color(COL_BCKGND, 0)
+        t.set_style_border_color(COL_BORDER, 0)
+        t.set_style_border_width(1, 0)
+        t.set_style_radius(3, 0)
+        t.set_style_pad_all(2, 0)
+        return t
+
+    def _tile_key(self, tile, text):
+        k = lv.label(tile)
+        k.set_text(text)
+        k.set_style_text_color(COL_TEXT, 0)
+        k.set_style_text_font(lv.font_montserrat_12, 0)
+        k.align(lv.ALIGN.LEFT_MID, 0, 0)
+        return k
+
+    def _tile_val(self, tile, text):
+        v = lv.label(tile)
+        v.set_text(text)
+        v.set_style_text_color(COL_TEXT, 0)
+        v.set_style_text_font(lv.font_montserrat_12, 0)
+        v.align(lv.ALIGN.RIGHT_MID, 0, 0)
+        return v
 
     def _wait_btn_release(self, enc_btn):
         """Block until button is released to prevent double-triggering."""
@@ -114,24 +148,33 @@ class UI:
         """
         Call every loop tick to handle the back-bar fill and long-press
         detection.  Returns the updated press_start timestamp:
-          - 0        → not pressed / timed out
-          - -1       → long-press threshold reached (caller should return)
-          - >0       → still holding, bar updated
+        - 0        → not pressed / timed out
+        - -1       → long-press threshold reached (caller should return)
+        - -2       → short-press released (caller should handle selection)
+        - >0       → still holding, bar updated
         Pass pressed_ms=0 when not pressed.
         """
 
         enc_btn.read()
-        if enc_btn._prev_state == enc_btn.IDLE and enc_btn._state == enc_btn.PRESSING:
+        if (
+            enc_btn._prev_state == enc_btn.IDLE
+            and enc_btn.get_state() == enc_btn.PRESSING
+        ):
             return time.ticks_ms()
-        elif enc_btn._state == enc_btn.PRESSING and pressed_ms > 0:
+        elif enc_btn.get_state() == enc_btn.PRESSING and pressed_ms > 0:
             elapsed = time.ticks_diff(time.ticks_ms(), pressed_ms)
-            fill.set_width(max(1, int(160 * min(elapsed, HOLD_MS) / HOLD_MS)))
+            fill.set_width(max(1, int(DISP_WIDTH * min(elapsed, HOLD_MS) / HOLD_MS)))
             if elapsed >= HOLD_MS:
-                fill.set_width(1)
+                fill.set_width(DISP_WIDTH)
                 return -1
             return pressed_ms
-        elif enc_btn._prev_state == enc_btn.PRESSING and enc_btn._state == enc_btn.IDLE:
-            fill.set_width(1)
+        elif (
+            enc_btn._prev_state == enc_btn.PRESSING
+            and enc_btn.get_state() == enc_btn.IDLE
+        ):
+            fill.set_width(0)
+            if pressed_ms > 0:
+                return -2  # Short press released
             return 0
         return pressed_ms
 
@@ -171,7 +214,7 @@ class UI:
         hint = lv.label(scrn)
         hint.set_text("Hold button to go back")
         hint.set_style_text_color(COL_TEXT, 0)
-        lbl.set_style_text_font(lv.font_montserrat_12, 0)
+        hint.set_style_text_font(lv.font_montserrat_12, 0)
         hint.align(lv.ALIGN.BOTTOM_MID, 0, -10)
 
         back_fill = self._make_back_bar(scrn)
@@ -305,110 +348,21 @@ class UI:
         Manual motor test screen
 
         Row 0: [RPM]          : read-only live value
-        Row 1: [AMbtn_press]         : read-only live value
-        Row 2: [TIMER]        : read-only live value
+        Row 1: [TIMER]        : read-only live value
+        Row 2: [AMPS] | TEMP  : read-only live value
         Row 3: [DIR] | [VOLT] : nav0 | nav 1
-        Row 5: [START/STOP]   : nav 2
+        Row 4: [START/STOP]   : nav 2
         """
 
         TILE_H = 22
 
         # ── Helpers ───────────────────────────────────────────────────────
-        def make_tile(x, y, w, h):
-            t = lv.obj(scrn)
-            t.set_size(w, h)
-            t.set_pos(x, y)
-            t.set_style_bg_color(COL_BCKGND, 0)
-            t.set_style_border_color(COL_BORDER, 0)
-            t.set_style_border_width(1, 0)
-            t.set_style_radius(3, 0)
-            t.set_style_pad_all(2, 0)
-            return t
-
-        def tile_key(tile, text):
-            k = lv.label(tile)
-            k.set_text(text)
-            k.set_style_text_color(COL_TEXT, 0)
-            k.set_style_text_font(lv.font_montserrat_12, 0)
-            k.align(lv.ALIGN.LEFT_MID, 0, 0)
-            return k
-
-        def tile_val(tile, text):
-            v = lv.label(tile)
-            v.set_text(text)
-            v.set_style_text_color(COL_TEXT, 0)
-            v.set_style_text_font(lv.font_montserrat_12, 0)
-            v.align(lv.ALIGN.RIGHT_MID, 0, 0)
-            return v
-
         def param_str(idx):
             if idx == "DIR":
-                return "FWD" if self.manual_dir_fwd else "REV"
+                return "FWD" if self.manual_dir == Direction.FWD else "REV"
             if idx == "VOLT":
-                return "{:.1f}V".format(self.manual_vol_x10 / 10)
+                return f"{self.manual_vol_x10 / 10:.1f}V"
             return ""
-
-        # ── GUI Setup ──────────────────────────────────────────────────
-        self._clear_screen()
-        scrn = lv.screen_active()
-        scrn.set_style_bg_color(COL_BCKGND, 0)
-        back_fill = self._make_back_bar(scrn)
-
-        # Row 0: RPM
-        t_rpm = make_tile(MARGIN, 2 * MARGIN, DISP_WIDTH - 2 * MARGIN, TILE_H)
-        k_rpm = tile_key(t_rpm, "RPM")
-        v_rpm = tile_val(t_rpm, "---")
-
-        # Row 1: AMbtn_press
-        t_ambtn_press = make_tile(
-            MARGIN, 2 * MARGIN + 1 * (MARGIN + TILE_H), DISP_WIDTH - 2 * MARGIN, TILE_H
-        )
-        k_ambtn_press = tile_key(t_ambtn_press, "CURRENT")
-        v_ambtn_press = tile_val(t_ambtn_press, "---")
-
-        # Row 2: TIMER
-        t_timer = make_tile(
-            MARGIN, 2 * MARGIN + 2 * (MARGIN + TILE_H), DISP_WIDTH - 2 * MARGIN, TILE_H
-        )
-        k_timer = tile_key(t_timer, "TIMER")
-        v_timer = tile_val(t_timer, "-:--")
-
-        # Row 3: DIR | VOLT
-        t_dir = make_tile(
-            MARGIN,
-            2 * MARGIN + 3 * (MARGIN + TILE_H),
-            int((DISP_WIDTH - 3 * MARGIN) / 2),
-            TILE_H,
-        )
-        k_dir = tile_key(t_dir, "DIR")
-        v_dir = tile_val(t_dir, param_str("DIR"))
-        t_volt = make_tile(
-            int((DISP_WIDTH - 3 * MARGIN) / 2) + 2 * MARGIN,
-            2 * MARGIN + 3 * (MARGIN + TILE_H),
-            int((DISP_WIDTH - 3 * MARGIN) / 2),
-            TILE_H,
-        )
-        k_volt = tile_key(t_volt, "VOLT")
-        v_volt = tile_val(t_volt, param_str("VOLT"))
-
-        # Row 4: START / STOP button
-        t_start_stop = make_tile(
-            MARGIN,
-            2 * MARGIN + 4 * (MARGIN + TILE_H),
-            DISP_WIDTH - 2 * MARGIN,
-            DISP_HEIGHT - (3 * MARGIN + 4 * (MARGIN + TILE_H)),
-        )
-        v_start_stop = lv.label(t_start_stop)
-        v_start_stop.set_text(lv.SYMBOL.PLAY + " START")
-        v_start_stop.set_style_text_color(COL_TEXT, 0)
-        v_start_stop.set_style_text_font(lv.font_montserrat_14, 0)
-        v_start_stop.align(lv.ALIGN.CENTER, 0, 0)
-
-        MANUAL_ITEMS = [
-            (t_dir, k_dir, v_dir),
-            (t_volt, k_volt, v_volt),
-            (t_start_stop, None, v_start_stop),
-        ]
 
         # Sets background and text colour of the selected cell
         def set_tile_state(idx, state):
@@ -456,6 +410,92 @@ class UI:
             lv.tick_inc(5)
             lv.task_handler()
 
+        # ── GUI Setup ──────────────────────────────────────────────────
+        self._clear_screen()
+        scrn = lv.screen_active()
+        scrn.set_style_bg_color(COL_BCKGND, 0)
+        back_fill = self._make_back_bar(scrn)
+
+        # Row 0: RPM
+        t_rpm = self._make_tile(
+            scrn, MARGIN, 2 * MARGIN, DISP_WIDTH - 2 * MARGIN, TILE_H
+        )
+        self._tile_key(t_rpm, "RPM")
+        v_rpm = self._tile_val(t_rpm, "---")
+
+        # Row 1: TIMER
+        t_timer = self._make_tile(
+            scrn,
+            MARGIN,
+            2 * MARGIN + 1 * (MARGIN + TILE_H),
+            DISP_WIDTH - 2 * MARGIN,
+            TILE_H,
+        )
+        self._tile_key(t_timer, "TIMER")
+        v_timer = self._tile_val(t_timer, "--:--")
+
+        # Row 2: AMPS | TEMP
+        t_amps = self._make_tile(
+            scrn,
+            MARGIN,
+            2 * MARGIN + 2 * (MARGIN + TILE_H),
+            int((DISP_WIDTH - 3 * MARGIN) / 2),
+            TILE_H,
+        )
+        self._tile_key(t_amps, "I")
+        v_amps = self._tile_val(t_amps, "-mA")
+
+        t_temp = self._make_tile(
+            scrn,
+            int((DISP_WIDTH - 3 * MARGIN) / 2) + 2 * MARGIN,
+            2 * MARGIN + 2 * (MARGIN + TILE_H),
+            int((DISP_WIDTH - 3 * MARGIN) / 2),
+            TILE_H,
+        )
+        self._tile_key(t_temp, "T")
+        v_temp = self._tile_val(t_temp, "-°C")
+
+        # Row 3: DIR | VOLT
+        t_dir = self._make_tile(
+            scrn,
+            MARGIN,
+            2 * MARGIN + 3 * (MARGIN + TILE_H),
+            int((DISP_WIDTH - 3 * MARGIN) / 2),
+            TILE_H,
+        )
+        k_dir = self._tile_key(t_dir, "DIR")
+        v_dir = self._tile_val(t_dir, param_str("DIR"))
+
+        t_volt = self._make_tile(
+            scrn,
+            int((DISP_WIDTH - 3 * MARGIN) / 2) + 2 * MARGIN,
+            2 * MARGIN + 3 * (MARGIN + TILE_H),
+            int((DISP_WIDTH - 3 * MARGIN) / 2),
+            TILE_H,
+        )
+        k_volt = self._tile_key(t_volt, "VOLT")
+        v_volt = self._tile_val(t_volt, param_str("VOLT"))
+
+        # Row 4: START / STOP button
+        t_start_stop = self._make_tile(
+            scrn,
+            MARGIN,
+            2 * MARGIN + 4 * (MARGIN + TILE_H),
+            DISP_WIDTH - 2 * MARGIN,
+            DISP_HEIGHT - (3 * MARGIN + 4 * (MARGIN + TILE_H)),
+        )
+        v_start_stop = lv.label(t_start_stop)
+        v_start_stop.set_text(lv.SYMBOL.PLAY + " START")
+        v_start_stop.set_style_text_color(COL_TEXT, 0)
+        v_start_stop.set_style_text_font(lv.font_montserrat_14, 0)
+        v_start_stop.align(lv.ALIGN.CENTER, 0, 0)
+
+        MANUAL_ITEMS = [
+            (t_dir, k_dir, v_dir),
+            (t_volt, k_volt, v_volt),
+            (t_start_stop, None, v_start_stop),
+        ]
+
         # Post GUI setup super loop
         while True:
             for i in range(len(MANUAL_ITEMS)):
@@ -479,75 +519,58 @@ class UI:
 
             # Supeloop of editing fields and updating the motor call functions
             while True:
-                enc_btn.read()
-                if (
-                    enc_btn.get_prev_state() == enc_btn.IDLE
-                    and enc_btn.get_state() == enc_btn.PRESSING
-                ):
-                    press_ms = time.ticks_ms()
-                elif enc_btn.get_state() == enc_btn.PRESSING and press_ms > 0:
-                    elabtn_pressed = time.ticks_diff(time.ticks_ms(), press_ms)
-                    back_fill.set_width(
-                        max(1, int(DISP_WIDTH * min(elabtn_pressed, HOLD_MS) / HOLD_MS))
-                    )
-                    # User has exited the manual screen, return to main menu
-                    if elabtn_pressed >= HOLD_MS:
-                        back_fill.set_width(DISP_WIDTH)
-                        if editing:
-                            rotary.set(
-                                min_val=0,
-                                max_val=len(MANUAL_ITEMS) - 1,
-                                value=sel,
-                                range_mode=rotary.RANGE_BOUNDED,
-                            )
-                        self._wait_btn_release(enc_btn)
-                        # Stop the motor running
-                        self.motor_run_state = False
-                        # Brake on exit, extra safety just in case the above does not trip the disable conditional
-                        motor.set_state(motor.MOTOR_BRAKE, VOLTAGE_MIN_MV / 1000)
-                        return
-                elif (
-                    enc_btn.get_prev_state() == enc_btn.PRESSING
-                    and enc_btn.get_state() == enc_btn.IDLE
-                    and press_ms > 0
-                ):
-                    # User let go before HOLD_MS, so they wanted to select a field
-                    elabtn_pressed = time.ticks_diff(time.ticks_ms(), press_ms)
+                press_ms = self._update_back_bar(back_fill, enc_btn, press_ms)
+
+                # User has exited the manual screen, return to main menu
+                if press_ms == -1:
+                    # Long press — exit screen
+                    if editing:
+                        rotary.set(
+                            min_val=0,
+                            max_val=len(MANUAL_ITEMS) - 1,
+                            value=sel,
+                            range_mode=rotary.RANGE_BOUNDED,
+                        )
+                    self._wait_btn_release(enc_btn)
+                    # Stop the motor running
+                    self.motor_run_state = False
+                    # Brake on exit, extra safety just in case the above does not trip the disable conditional
+                    motor.set_state(motor.MOTOR_BRAKE, VOLTAGE_MIN_MV / 1000)
+                    return
+                elif press_ms == -2:
+                    # Short press — handle selection
                     press_ms = 0
-                    back_fill.set_width(0)
-                    if elabtn_pressed < HOLD_MS:
-                        if editing:
-                            editing = False
+                    if editing:
+                        editing = False
+                        rotary.set(
+                            min_val=0,
+                            max_val=len(MANUAL_ITEMS) - 1,
+                            value=sel,
+                            range_mode=rotary.RANGE_BOUNDED,
+                        )
+                        redraw_tiles(sel)
+                    else:
+                        if sel == 0:
+                            # Toggle direction
+                            if self.manual_dir == Direction.FWD:
+                                self.manual_dir = Direction.REV
+                            elif self.manual_dir == Direction.REV:
+                                self.manual_dir = Direction.FWD
+                            redraw_tiles(sel)
+                        elif sel == 1:
+                            editing = True
                             rotary.set(
-                                min_val=0,
-                                max_val=len(MANUAL_ITEMS) - 1,
-                                value=sel,
+                                min_val=VOLTAGE_MIN_MV // 100,
+                                max_val=VOLTAGE_MAX_MV // 100,
+                                value=self.manual_vol_x10,
                                 range_mode=rotary.RANGE_BOUNDED,
                             )
+                            redraw_tiles(sel, editing=True)
+                        elif sel == 2:
+                            self.motor_run_state = not self.motor_run_state
+                            if self.motor_run_state:
+                                self.manual_run_start = time.ticks_ms()
                             redraw_tiles(sel)
-                        else:
-                            # Toggle between forward and reverse
-                            if sel == 0:
-                                self.manual_dir_fwd = not self.manual_dir_fwd
-                                redraw_tiles(sel)
-                            # Adjust voltage in 100mV stebtn_press
-                            elif sel == 1:
-                                editing = True
-                                rotary.set(
-                                    min_val=VOLTAGE_MIN_MV / 100,
-                                    max_val=VOLTAGE_MAX_MV / 100,
-                                    value=self.manual_vol_x10,
-                                    range_mode=rotary.RANGE_BOUNDED,
-                                )
-                                redraw_tiles(sel, editing=True)
-                            # Toggle motor run state
-                            elif sel == 2:
-                                self.motor_run_state = not self.motor_run_state
-
-                                if self.motor_run_state is True:
-                                    self.manual_run_start = time.ticks_ms()
-
-                                redraw_tiles(sel)
 
                 rv = rotary.value()
                 if editing:
@@ -572,17 +595,17 @@ class UI:
                 # Only call the set_state function if something has changed
                 if (
                     self.motor_run_state != self.old_motor_run_state
-                    or self.manual_dir_fwd != self.old_manual_dir_fwd
+                    or self.manual_dir != self.old_manual_dir
                     or self.manual_vol_x10 != self.old_manual_vol_x10
                 ):
                     self.old_motor_run_state = self.motor_run_state
-                    self.old_manual_dir_fwd = self.manual_dir_fwd
+                    self.old_manual_dir = self.manual_dir
                     self.old_manual_vol_x10 = self.manual_vol_x10
 
                     # Direction Control:
                     if self.motor_run_state is False:
                         mode = motor.MOTOR_BRAKE
-                    elif self.manual_dir_fwd is True:
+                    elif self.manual_dir is Direction.FWD:
                         mode = motor.MOTOR_FORWARD
                     else:
                         mode = motor.MOTOR_REVERSE
@@ -601,18 +624,15 @@ class UI:
                     current_ma = 0
 
                 # Update live readouts in tiles
-                v_ambtn_press.set_text(f"{current_ma:.0f}mA")
+                v_amps.set_text(f"{current_ma:.0f}mA")
                 v_rpm.set_text(f"{motor.get_rpm_1s():d}")
+                v_temp.set_text(f"{motor.get_temp():.1f}°C")
 
-                # Elabtn_pressed time, this only resets on the start / stop, not on direction / voltage changes
+                # Elasped time, this resets on start / stop, not on direction / voltage changes
                 if self.manual_run_start is not None and self.motor_run_state is True:
-                    elabtn_pressed_ms = time.ticks_diff(
-                        time.ticks_ms(), self.manual_run_start
-                    )
-                    elabtn_pressed_s = elabtn_pressed_ms // 1000
-                    v_timer.set_text(
-                        f"{elabtn_pressed_s // 60:02d}:{elabtn_pressed_s % 60:02d}"
-                    )
+                    elapsed_ms = time.ticks_diff(time.ticks_ms(), self.manual_run_start)
+                    elapsed_s = elapsed_ms // 1000
+                    v_timer.set_text(f"{elapsed_s // 60:02d}:{elapsed_s % 60:02d}")
 
                 lv.tick_inc(2)
                 lv.task_handler()
