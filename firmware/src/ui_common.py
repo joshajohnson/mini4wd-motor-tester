@@ -11,6 +11,7 @@ class Direction:
 # ────────────────────── Constants for all screens ───────────────────────
 
 HOLD_MS = 800
+WHEEL_CIRCUMFERENCE = 0.002687  # meters
 
 VOLTAGE_MIN_MV = 500
 VOLTAGE_MAX_MV = 3000
@@ -42,6 +43,7 @@ BREAK_IN_STEPS = [
 DISP_WIDTH = 160
 DISP_HEIGHT = 128
 MARGIN = 2
+TILE_H = 22
 
 # Delay on how frequently we update live values
 VALUE_UPDATE_MS = 200
@@ -190,5 +192,4 @@ class UIBase:
         while True:
             pressed_ms = self._update_back_bar(back_fill, enc_btn, pressed_ms)
             if pressed_ms == -1:
-                self._wait_btn_release(enc_btn)
                 return

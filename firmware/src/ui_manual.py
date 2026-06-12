@@ -10,6 +10,7 @@ from ui_common import (
     DISP_WIDTH,
     DISP_HEIGHT,
     MARGIN,
+    TILE_H,
     COL_BCKGND,
     COL_TILE,
     COL_BORDER,
@@ -31,8 +32,6 @@ class ManualScreen(UIBase):
     Row 3: [DIR] | [VOLT] : nav 0 | nav 1
     Row 4: [START/STOP]   : nav 2
     """
-
-    TILE_H = 22
 
     def __init__(self, display):
         super().__init__(display)
@@ -112,7 +111,7 @@ class ManualScreen(UIBase):
         return int((DISP_WIDTH - 3 * MARGIN) / 2)
 
     def _row_y(self, row):
-        return 2 * MARGIN + row * (MARGIN + self.TILE_H)
+        return 2 * MARGIN + row * (MARGIN + TILE_H)
 
     # ── Public entry point ────────────────────────────────────────────
 
@@ -127,46 +126,46 @@ class ManualScreen(UIBase):
 
         # Row 0: RPM
         t_rpm = self._make_tile(
-            scrn, MARGIN, self._row_y(0), DISP_WIDTH - 2 * MARGIN, self.TILE_H
+            scrn, MARGIN, self._row_y(0), DISP_WIDTH - 2 * MARGIN, TILE_H
         )
         self._tile_key(t_rpm, "RPM")
         v_rpm = self._tile_val(t_rpm, "0")
 
         # Row 1: TIMER
         t_timer = self._make_tile(
-            scrn, MARGIN, self._row_y(1), DISP_WIDTH - 2 * MARGIN, self.TILE_H
+            scrn, MARGIN, self._row_y(1), DISP_WIDTH - 2 * MARGIN, TILE_H
         )
         self._tile_key(t_timer, "TIMER")
         v_timer = self._tile_val(t_timer, "--:--")
 
         # Row 2: AMPS | TEMP
         t_amps = self._make_tile(
-            scrn, self._half_tile_x(0), self._row_y(2), self._half_tile_w(), self.TILE_H
+            scrn, self._half_tile_x(0), self._row_y(2), self._half_tile_w(), TILE_H
         )
         self._tile_key(t_amps, "I")
         v_amps = self._tile_val(t_amps, "0mA")
 
         t_temp = self._make_tile(
-            scrn, self._half_tile_x(1), self._row_y(2), self._half_tile_w(), self.TILE_H
+            scrn, self._half_tile_x(1), self._row_y(2), self._half_tile_w(), TILE_H
         )
         self._tile_key(t_temp, "T")
         v_temp = self._tile_val(t_temp, f"{motor.get_temp_10s():.1f}°C")
 
         # Row 3: DIR | VOLT
         t_dir = self._make_tile(
-            scrn, self._half_tile_x(0), self._row_y(3), self._half_tile_w(), self.TILE_H
+            scrn, self._half_tile_x(0), self._row_y(3), self._half_tile_w(), TILE_H
         )
         k_dir = self._tile_key(t_dir, "DIR")
         v_dir = self._tile_val(t_dir, self._param_str("DIR"))
 
         t_volt = self._make_tile(
-            scrn, self._half_tile_x(1), self._row_y(3), self._half_tile_w(), self.TILE_H
+            scrn, self._half_tile_x(1), self._row_y(3), self._half_tile_w(), TILE_H
         )
         k_volt = self._tile_key(t_volt, "VOLT")
         v_volt = self._tile_val(t_volt, self._param_str("VOLT"))
 
         # Row 4: START / STOP
-        start_h = DISP_HEIGHT - (3 * MARGIN + 4 * (MARGIN + self.TILE_H))
+        start_h = DISP_HEIGHT - (3 * MARGIN + 4 * (MARGIN + TILE_H))
         t_start_stop = self._make_tile(
             scrn, MARGIN, self._row_y(4), DISP_WIDTH - 2 * MARGIN, start_h
         )
@@ -238,7 +237,6 @@ class ManualScreen(UIBase):
                 incr=1,
                 range_mode=rotary.RANGE_BOUNDED,
             )
-        self._wait_btn_release(enc_btn)
         self.motor_run_state = False
         motor.set_state(motor.MOTOR_BRAKE, VOLTAGE_MIN_MV)
 

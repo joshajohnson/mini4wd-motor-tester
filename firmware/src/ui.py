@@ -16,6 +16,7 @@ from ui_common import (
     COL_SETTINGS,
 )
 from ui_manual import ManualScreen
+from ui_speed import SpeedScreen
 
 
 class UI(UIBase):
@@ -34,6 +35,7 @@ class UI(UIBase):
     def __init__(self, display):
         super().__init__(display)
         self._manual = ManualScreen(display)
+        self._speed = SpeedScreen(display)
 
     def show_menu(self, motor, rotary, enc_btn, wheel_sensor):
         """
@@ -126,15 +128,12 @@ class UI(UIBase):
             elif selected == 1:
                 self._show_breakin(motor, rotary, enc_btn)
             elif selected == 2:
-                self._show_speed_test(rotary, enc_btn, wheel_sensor)
+                self._speed.show(wheel_sensor, enc_btn)
             elif selected == 3:
                 self._show_settings(rotary, enc_btn)
 
     def _show_breakin(self, motor, rotary, enc_btn):
         self._show_placeholder("Break In", enc_btn)
-
-    def _show_speed_test(self, rotary, enc_btn, wheel_sensor):
-        self._show_placeholder("Speed Test", enc_btn)
 
     def _show_settings(self, rotary, enc_btn):
         self._show_placeholder("Settings", enc_btn)
