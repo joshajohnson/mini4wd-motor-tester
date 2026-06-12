@@ -1,4 +1,5 @@
 from machine import Pin, I2C
+import time
 from power_supply import PSU
 from drv8837 import DRV8837
 from motor_control import MotorControl
@@ -8,9 +9,8 @@ from rotary_irq_esp import RotaryIRQ
 from st7735_display import ST7735_display
 from button import BUTTON
 from ui import UI
-import time
 
-time.sleep(3) # Allow time to connect to REPLY after a reset
+time.sleep(3)  # Allow time to connect to REPL after a reset for debugging
 
 # Init all the things
 i2c = I2C(sda=Pin(8), scl=Pin(9))
@@ -39,27 +39,3 @@ motor = MotorControl(psu, drv, rpm, tmp)
 # Launch UI
 app = UI(display)
 app.show_menu(psu, motor, tmp, rotary_enc, enc_btn, wheel_sensor)
-
-# def set_motor(mode, voltage):
-#     motor.set_state(mode, voltage)
-
-# def loop():
-#     enc_old = rotary_enc.value()
-#     while True:
-#         # Need to call the below to keep the motor state updated
-#         motor.update_state()
-#         motor.update_current()
-#         motor.update_rpm()
-
-#         # Keep wheel speed updated
-#         wheel.update_pulse_count()
-
-#         # Button and rotary encoder updates
-#         btn.read()
-
-#         enc_new = rotary_enc.value()
-#         if enc_old != enc_new:
-#             enc_old = enc_new
-#             print('result =', enc_new)
-
-#         print(f'State: {motor.motor_direction} Voltage: {round(motor.target_voltage_mv/1000, 2)}V Current 100ms: {round(motor.get_current_100ms(),3)}A Temp: {round(motor.get_temp(),1)}C RPM 100ms: {motor.get_rpm_100ms()} RPM 1s: {motor.get_rpm_1s()} Wheel 100ms: {wheel.get_rpm_100ms()} Wheel 1s: {wheel.get_rpm_1s()}')

@@ -151,3 +151,9 @@ class BUTTON:
 
     def get_pin(self):
         return self.get_id()
+
+    def get_state(self):
+        return self._state
+
+    def get_prev_state(self):
+        return self._prev_state

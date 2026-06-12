@@ -1,3 +1,4 @@
+import time
 import lcd_bus
 from micropython import const
 import machine
@@ -139,8 +140,6 @@ class ST7735_display:
             25, 0
         )  # Make it circular (radius = half of width/height)
         circle.align(lv.ALIGN.CENTER, 0, -10)
-
-        import time
 
         lv.task_handler()
         # Show init text for a few seconds before starting the counter display

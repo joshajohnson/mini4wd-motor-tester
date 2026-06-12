@@ -131,7 +131,7 @@ class Rotary(object):
 
     def remove_listener(self, l):
         if l not in self._listener:
-            raise ValueError("{} is not an installed listener".format(l))
+            raise ValueError(f"{l} is not an installed listener")
         self._listener.remove(l)
 
     def _process_rotary_pins(self, pin):

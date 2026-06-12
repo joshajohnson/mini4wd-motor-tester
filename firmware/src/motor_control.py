@@ -103,7 +103,7 @@ class MotorControl:
             self.target_motor_direction = direction
 
     def ramp_voltage(self, target_voltage_mv: float = None):
-        if target_voltage_mv == None:
+        if target_voltage_mv is None:
             target_voltage_mv = self.target_voltage_mv
 
         now = time.ticks_ms()

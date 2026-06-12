@@ -1,5 +1,5 @@
-import lvgl as lv
 import time
+import lvgl as lv
 
 # ────────────────────── Constants for all screens ───────────────────────
 
@@ -104,7 +104,7 @@ class UI:
 
         while True:
             enc_btn.read()
-            if enc_btn._state == enc_btn.IDLE:
+            if enc_btn.get_state() == enc_btn.IDLE:
                 break
             lv.tick_inc(10)
             lv.task_handler()
@@ -137,16 +137,22 @@ class UI:
         """
 
         enc_btn.read()
-        if enc_btn._prev_state == enc_btn.IDLE and enc_btn._state == enc_btn.PRESSING:
+        if (
+            enc_btn.get_prev_state() == enc_btn.IDLE
+            and enc_btn.get_state() == enc_btn.PRESSING
+        ):
             return time.ticks_ms()
-        elif enc_btn._state == enc_btn.PRESSING and press_ms > 0:
+        elif enc_btn.get_state() == enc_btn.PRESSING and press_ms > 0:
             elapsed = time.ticks_diff(time.ticks_ms(), press_ms)
             fill.set_width(max(1, int(DISP_WIDTH * min(elapsed, HOLD_MS) / HOLD_MS)))
             if elapsed >= HOLD_MS:
                 fill.set_width(1)
                 return -1
             return press_ms
-        elif enc_btn._prev_state == enc_btn.PRESSING and enc_btn._state == enc_btn.IDLE:
+        elif (
+            enc_btn.get_prev_state() == enc_btn.PRESSING
+            and enc_btn.get_state() == enc_btn.IDLE
+        ):
             fill.set_width(1)
             return 0
         return press_ms
@@ -154,10 +160,6 @@ class UI:
     # ──────────────────────────── Main menu ──────────────────────────────
 
     def show_menu(self, psu, motor, tmp, rotary, enc_btn, wheel_sensor):
-        self._psu = psu
-        self._motor = motor
-        self._tmp = tmp
-        self._wheel_sensor = wheel_sensor
         """
         Main menu — 2×2 grid
         [Manual] [Break-in]
@@ -251,7 +253,7 @@ class UI:
                     lv.task_handler()
 
                 enc_btn.read()
-                if enc_btn._state == enc_btn.PRESSING:
+                if enc_btn.get_state() == enc_btn.PRESSING:
                     self._wait_btn_release(enc_btn)
                     break
 
@@ -452,11 +454,11 @@ class UI:
             while True:
                 enc_btn.read()
                 if (
-                    enc_btn._prev_state == enc_btn.IDLE
-                    and enc_btn._state == enc_btn.PRESSING
+                    enc_btn.get_prev_state() == enc_btn.IDLE
+                    and enc_btn.get_state() == enc_btn.PRESSING
                 ):
                     press_ms = time.ticks_ms()
-                elif enc_btn._state == enc_btn.PRESSING and press_ms > 0:
+                elif enc_btn.get_state() == enc_btn.PRESSING and press_ms > 0:
                     elapsed = time.ticks_diff(time.ticks_ms(), press_ms)
                     back_fill.set_width(
                         max(1, int(DISP_WIDTH * min(elapsed, HOLD_MS) / HOLD_MS))
@@ -478,8 +480,8 @@ class UI:
                         motor.set_state(motor.MOTOR_BRAKE, VOLTAGE_MIN_MV / 1000)
                         return
                 elif (
-                    enc_btn._prev_state == enc_btn.PRESSING
-                    and enc_btn._state == enc_btn.IDLE
+                    enc_btn.get_prev_state() == enc_btn.PRESSING
+                    and enc_btn.get_state() == enc_btn.IDLE
                     and press_ms > 0
                 ):
                     # User let go before HOLD_MS, so they wanted to select a field
@@ -515,7 +517,7 @@ class UI:
                             elif sel == 2:
                                 self.motor_run_state = not self.motor_run_state
 
-                                if self.motor_run_state == True:
+                                if self.motor_run_state is True:
                                     self.manual_run_start = time.ticks_ms()
 
                                 redraw_tiles(sel)
@@ -551,9 +553,9 @@ class UI:
                     self.old_manual_vol_x10 = self.manual_vol_x10
 
                     # Direction Control:
-                    if self.motor_run_state == False:
+                    if self.motor_run_state is False:
                         mode = motor.MOTOR_BRAKE
-                    elif self.manual_dir_fwd == True:
+                    elif self.manual_dir_fwd is True:
                         mode = motor.MOTOR_FORWARD
                     else:
                         mode = motor.MOTOR_REVERSE
@@ -572,16 +574,14 @@ class UI:
                     current_ma = 0
 
                 # Update live readouts in tiles
-                v_amps.set_text("{:.0f}mA".format(current_ma))
-                v_rpm.set_text("{:d}".format(motor.get_rpm_1s()))
+                v_amps.set_text(f"{current_ma:.0f}mA")
+                v_rpm.set_text(f"{motor.get_rpm_1s():d}")
 
                 # Elapsed time, this only resets on the start / stop, not on direction / voltage changes
-                if self.manual_run_start is not None and self.motor_run_state == True:
+                if self.manual_run_start is not None and self.motor_run_state is True:
                     elapsed_ms = time.ticks_diff(time.ticks_ms(), self.manual_run_start)
                     elapsed_s = elapsed_ms // 1000
-                    v_timer.set_text(
-                        "{:02d}:{:02d}".format(elapsed_s // 60, elapsed_s % 60)
-                    )
+                    v_timer.set_text(f"{elapsed_s // 60:02d}:{elapsed_s % 60:02d}")
 
                 lv.tick_inc(2)
                 lv.task_handler()
